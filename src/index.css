@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand: #0A0A0A;
+  --color-brand-light: #1A1A1A;
+  --color-accent: #C5A059;
+  --color-accent-dark: #A6864B;
+  --color-bg-soft: #F9F9F7;
+  --color-cta: #D94B3E;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-muted: #6B7280;
+  
+  --shadow-premium: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-gold: 0 10px 15px -3px rgba(197, 160, 89, 0.2);
+  --shadow-inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand antialiased selection:bg-accent/30 selection:text-brand transition-colors duration-500 font-sans;
+  }
+}
+
+.glass-header {
+  @apply bg-white/80 backdrop-blur-md border-b border-border transition-all duration-500;
+}
+
+.card-premium {
+  @apply bg-white border border-brand/[0.04] rounded-2xl p-8 transition-all duration-500 hover:border-accent/40 hover:shadow-heavy hover:-translate-y-1 relative overflow-hidden;
+}
+
+.card-dark {
+  @apply bg-brand border border-white/5 rounded-[2.5rem] p-8 transition-all duration-500 shadow-inner-glow relative overflow-hidden;
+}
+
+.btn-primary {
+  @apply bg-brand text-white px-8 py-4 rounded-xl font-semibold text-[11px] tracking-[0.15em] uppercase transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20;
+}
+
+.btn-gold {
+  @apply bg-accent text-white py-5 px-10 rounded-2xl font-semibold text-[12px] tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 flex items-center justify-center gap-3;
+}
+
+.reveal {
+  @apply opacity-0 translate-y-12 transition-all duration-1000 ease-out;
+}
+
+.reveal.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bg-soft;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand/10 hover:bg-brand/20 transition-colors rounded-full;
+}
+
+.book-text {
+  @apply font-sans text-base sm:text-lg leading-relaxed opacity-90 text-brand font-light tracking-wide;
+}
+
+.technical-label {
+  @apply text-[9px] font-semibold tracking-[0.4em] uppercase text-accent font-sans;
+}
+
+.metadata-text {
+  @apply font-mono text-[11px] tracking-widest text-muted opacity-70 uppercase;
+}
