@@ -52,7 +52,7 @@ function FounderBadge({
 
 export function Hero() {
   return (
-    <header className="relative flex min-h-dvh max-h-dvh w-full min-w-0 flex-col overflow-x-hidden overflow-y-auto overscroll-y-contain bg-[#050505] pb-[env(safe-area-inset-bottom,0px)] text-white lg:h-dvh lg:overflow-hidden">
+    <header className="relative flex min-h-dvh w-full min-w-0 flex-col overflow-x-hidden bg-[#050505] pb-[env(safe-area-inset-bottom,0px)] text-white lg:h-dvh lg:max-h-dvh lg:min-h-0 lg:overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
           className="absolute inset-0 opacity-[0.38] [background-size:3.5px_3.5px]"
@@ -68,7 +68,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_35%,rgba(255,255,255,0.04),transparent_70%)]" />
       </div>
 
-      <div className="layout-container scale-exempt relative z-10 flex min-h-0 w-full min-w-0 max-w-full flex-1 flex-col items-center justify-start py-5 sm:py-8 lg:min-h-0 lg:justify-center lg:py-9 xl:py-10">
+      <div className="layout-container scale-exempt relative z-10 flex w-full min-w-0 max-w-full flex-col items-center justify-start py-5 sm:py-8 lg:min-h-0 lg:flex-1 lg:justify-center lg:py-9 xl:py-10">
         <div className="grid min-h-0 w-full min-w-0 max-w-full auto-rows-min items-start justify-items-stretch gap-y-7 gap-x-0 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8 xl:gap-x-12">
           <div className="order-1 flex min-h-0 w-full min-w-0 max-w-full flex-col justify-center justify-self-center px-0.5 sm:px-0 lg:order-none lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
             <motion.div
