@@ -86,7 +86,7 @@ LP-PJI/
 
 ## Roadmap curto
 
-1. Trocar `href="#"` de Termos/Privacidade por rotas reais.
+1. ~~Trocar `href="#"` de Termos/Privacidade por rotas reais.~~ Feito: `/termos` e `/privacidade` (React Router + `LegalLayout`).
 2. Implementar carregamento real de thumbs e clipes dos módulos em `public/media/modules`.
 3. Opcional: testes visuais por breakpoint para evitar regressão de tipografia/spacing.
 
