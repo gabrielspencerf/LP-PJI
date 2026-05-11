@@ -21,9 +21,9 @@ Referência cruzada: tokens e classes globais em [design-system.md](./design-sys
 
 ## 2. `scale-exempt` e zoom
 
-- **`zoom: 1.25`** está definido em `.scale-exempt` (`src/index.css`).
+- Em **`< 640px`**, `.scale-exempt` usa **`zoom: 1`**; a partir de **`sm`**, **`zoom: 1.25`** (`src/index.css`) — evita overflow horizontal no telemóvel na hero e no footer.
 - Na hero, **`.scale-exempt` vai no `layout-container` interior**, não no `<header>`.
-- Motivo: zoom no mesmo nó que `h-dvh` inflacionava altura / overflow em relação ao viewport.
+- Motivo: zoom no mesmo nó que `h-dvh` inflacionava altura / overflow em relação ao viewport; em mobile o zoom extra agravava cortes de texto e CTAs.
 - **Footer** mantém `scale-exempt` no próprio `<footer>` (ver `Footer.tsx`).
 
 Checklist noutras secções: se precisar de “tamanho visual” equivalente ao da hero, preferir **wrapper interno** com `scale-exempt`, não a `<section>` inteira.

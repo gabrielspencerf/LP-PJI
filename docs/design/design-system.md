@@ -25,7 +25,7 @@ Manual de identidade visual e padrões de implementação da landing.
 ## Escala tipográfica
 
 - Base global reduzida: `html { font-size: 80%; }`.
-- Exceções de escala: `.scale-exempt` (**miolo** da hero no `layout-container`, não no `<header>`; footer). Navbar desativada na página — pode voltar a usar a mesma regra.
+- Exceções de escala: `.scale-exempt` (**miolo** da hero no `layout-container`, não no `<header>`; footer). **Zoom 1.25 só a partir de `sm`**; em telemóvel estreito fica `zoom: 1` para evitar overflow. Navbar desativada na página — pode voltar a usar a mesma regra.
 - Labels oficiais:
   - `.label-micro`
   - `.label-nano`

@@ -249,8 +249,15 @@
   @apply font-sans text-xs font-medium text-muted underline-offset-4 transition-colors hover:text-brand hover:underline;
 }
 
+/* Zoom só a partir de tablet: em telemóvel evita overflow horizontal na hero e no footer. */
 .scale-exempt {
-  zoom: 1.25;
+  zoom: 1;
+}
+
+@media (min-width: 640px) {
+  .scale-exempt {
+    zoom: 1.25;
+  }
 }
 
 @keyframes hero-eco-marquee {

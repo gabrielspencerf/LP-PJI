@@ -68,63 +68,67 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_35%,rgba(255,255,255,0.04),transparent_70%)]" />
       </div>
 
-      <div className="layout-container scale-exempt relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center py-6 sm:py-8 lg:min-h-0 lg:py-9 xl:py-10">
-        <div className="grid min-h-0 w-full min-w-0 auto-rows-min items-center justify-items-center gap-y-9 gap-x-0 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8 xl:gap-x-12">
-          <div className="flex min-h-0 w-full max-w-xl flex-col justify-center justify-self-center lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
+      <div className="layout-container scale-exempt relative z-10 flex min-h-0 w-full min-w-0 flex-1 flex-col items-center justify-center py-5 sm:py-8 lg:min-h-0 lg:py-9 xl:py-10">
+        <div className="grid min-h-0 w-full min-w-0 max-w-full auto-rows-min items-center justify-items-center gap-y-7 gap-x-0 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8 xl:gap-x-12">
+          <div className="flex min-h-0 w-full min-w-0 max-w-full flex-col justify-center justify-self-center px-0.5 sm:px-0 lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
             <motion.div
               initial={{opacity: 0, x: -28}}
               animate={{opacity: 1, x: 0}}
               transition={{duration: 0.75, ease: 'easeOut'}}
-              className="w-full lg:max-w-none"
+              className="w-full min-w-0 max-w-full lg:max-w-none"
             >
-              <div className="mb-6 flex items-center gap-4 sm:mb-8">
-                <div className="h-[2px] w-12 bg-accent/60" aria-hidden="true" />
-                <span className="label-micro text-accent">Método prático para advogados que usam IA</span>
+              <div className="mb-5 flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 sm:mb-8 sm:flex-nowrap sm:gap-4">
+                <div className="h-[2px] w-8 shrink-0 bg-accent/60 sm:w-12" aria-hidden="true" />
+                <span className="min-w-0 max-w-full text-pretty text-[9px] font-semibold uppercase leading-snug tracking-[0.14em] text-accent sm:text-[10px] sm:tracking-[0.2em]">
+                  Método prático para advogados que usam IA
+                </span>
               </div>
 
-              <h1 className="mb-4 font-display text-[2.35rem] font-semibold leading-[1.02] tracking-[-0.02em] sm:mb-6 sm:text-[2.65rem] lg:text-[3.1rem] xl:text-[3.45rem]">
-                <span className="block text-white">
+              <h1 className="mb-4 max-w-full text-pretty font-display text-[1.72rem] font-semibold leading-[1.05] tracking-[-0.02em] sm:mb-6 sm:text-[2.35rem] sm:leading-[1.02] md:text-[2.65rem] lg:text-[3.1rem] xl:text-[3.45rem]">
+                <span className="block break-words text-white">
                   O Claude / GPT{' '}
                   <span className="text-white/90">não têm OAB.</span>
                 </span>
-                <span className="mt-2 block bg-gradient-to-r from-accent via-[#e8a090] to-accent bg-clip-text text-transparent sm:mt-3">
+                <span className="mt-1.5 block bg-gradient-to-r from-accent via-[#e8a090] to-accent bg-clip-text text-transparent sm:mt-3">
                   Você tem.
                 </span>
               </h1>
 
-              <p className="mb-6 max-w-xl text-[0.95rem] leading-relaxed text-white/65 sm:mb-8 sm:text-base">
+              <p className="mb-5 max-w-full text-pretty text-[0.9rem] leading-relaxed text-white/65 sm:mb-8 sm:text-base">
                 Use Claude, GPT ou outro grande modelo na advocacia com protocolo de briefing, validação de fonte, proteção de dados e revisão humana — antes de virar peça, parecer ou orientação ao cliente.
               </p>
 
-              <HeroEcosystemStrip />
+              <div className="w-full min-w-0 max-w-full overflow-hidden">
+                <HeroEcosystemStrip />
+              </div>
 
-              <div className="flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start">
+              <div className="mx-auto flex w-full max-w-full flex-col items-stretch justify-center gap-2.5 sm:max-w-xl sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
                 <a
                   href="#oferta"
-                  className="btn-gold-hero group relative inline-flex min-h-[2.85rem] w-full max-w-sm shrink-0 items-center justify-center overflow-hidden transition-all active:scale-[0.98] sm:w-auto sm:min-h-[3rem]"
+                  className="btn-gold-hero group relative mx-auto inline-flex min-h-[2.75rem] w-full max-w-[min(100%,20rem)] shrink-0 items-center justify-center overflow-hidden px-4 transition-all active:scale-[0.98] sm:mx-0 sm:min-h-[3rem] sm:w-auto sm:max-w-sm"
                 >
                   <ClaudeLogo className="h-4 w-4 shrink-0 transition-transform group-hover:scale-110" />
-                  <span className="text-center leading-tight">ACESSAR O PROTOCOLO</span>
+                  <span className="px-1 text-center text-[9px] leading-tight sm:text-[11px]">ACESSAR O PROTOCOLO</span>
                   <div className="absolute inset-0 -translate-x-full bg-black/[0.06] transition-transform duration-500 group-hover:translate-x-0" />
                 </a>
                 <a
                   href="#metodo"
-                  className="group inline-flex w-full max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md border border-white/16 bg-transparent px-2.5 py-1.5 text-[8px] font-bold uppercase tracking-wide text-white/90 transition-all hover:border-white/28 hover:bg-white/[0.05] hover:text-white sm:w-auto sm:max-w-none sm:gap-2 sm:px-3 sm:py-2 sm:text-[9px]"
+                  className="group mx-auto inline-flex w-full max-w-[min(100%,11.5rem)] shrink-0 items-center justify-center gap-1.5 rounded-md border border-white/16 bg-transparent px-2.5 py-1.5 text-[8px] font-bold uppercase tracking-wide text-white/90 transition-all hover:border-white/28 hover:bg-white/[0.05] hover:text-white sm:mx-0 sm:w-auto sm:max-w-none sm:gap-2 sm:px-3 sm:py-2 sm:text-[9px]"
                 >
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/18 transition-all group-hover:scale-105 group-hover:border-white/35 sm:h-6 sm:w-6">
-                    <PlayCircle className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
+                    <PlayCircle className="h-3 w-3 sm:h-3.5 sm:h-3.5" aria-hidden="true" />
                   </div>
                   VER MÉTODO
                 </a>
               </div>
 
-              <p className="mt-6 max-w-xl text-[8px] font-semibold uppercase leading-relaxed !tracking-[0.04em] text-accent/44 sm:mt-8 sm:text-[8.5px]">
+              <p className="mx-auto mt-5 max-w-full text-pretty px-0.5 text-center text-[7.5px] font-semibold uppercase leading-relaxed tracking-[0.06em] text-accent/44 sm:mt-8 sm:px-0 sm:text-[8.5px] sm:!tracking-[0.04em]">
                 Curso gravado · Prompts · Checklists · Fluxos de validação · Sem promessa de resultado jurídico
               </p>
             </motion.div>
           </div>
 
-          <div className="flex min-h-0 w-full max-w-lg min-w-0 flex-col items-center justify-center justify-self-center sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:max-w-none lg:items-stretch lg:justify-self-stretch lg:pl-1 lg:pr-2 xl:pl-2 xl:pr-3">
+          <div className="flex min-h-0 w-full min-w-0 max-w-lg flex-col items-center justify-center justify-self-center px-0.5 sm:max-w-xl sm:px-0 lg:col-span-6 lg:col-start-7 lg:max-w-none lg:items-stretch lg:justify-self-stretch lg:pl-1 lg:pr-2 xl:pl-2 xl:pr-3">
             <motion.div
               initial={{opacity: 0, scale: 0.98, y: 20}}
               animate={{opacity: 1, scale: 1, y: 0}}
