@@ -36,7 +36,7 @@ Checklist noutras secções: se precisar de “tamanho visual” equivalente ao 
 |--------|-------------------|----------------|
 | Miolo | `… justify-start lg:justify-center` no `layout-container` | **Mobile:** conteúdo começa no **topo** (evita “corte” que mostrava fotos primeiro quando o miolo era mais alto que o viewport); **desktop:** centro vertical como antes. |
 | `<header>` | `overflow-x-hidden`; **sem** `max-h` nem scroll interno em `<lg` (a página faz scroll único); `lg:h-dvh lg:max-h-dvh lg:overflow-hidden` | Mobile: hero pode crescer em altura; desktop mantém viewport fixa. |
-| Grelha | `order-1` texto / `order-2` fotos em `<lg`; `items-start` mobile; `lg:order-none` + `items-center` | Ordem leitura: **copy → fotos** no telemóvel. |
+| Grelha | `order-1` fotos / `order-2` texto em `<lg`; `items-start` mobile; `lg:order-none` + `items-center` | No telemóvel: **fotos no topo**, copy e CTAs abaixo; no desktop a ordem visual volta ao DOM (texto à esquerda, fotos à direita). |
 | Grelha | `lg:grid-cols-12 …` | Duas colunas no desktop. |
 | `html` / `body` | `overflow-x-hidden`, `max-w-[100%]` | Evita faixa clara por overflow horizontal global. |
 

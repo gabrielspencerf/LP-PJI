@@ -70,7 +70,7 @@ export function Hero() {
 
       <div className="layout-container scale-exempt relative z-10 flex w-full min-w-0 max-w-full flex-col items-center justify-start py-5 sm:py-8 lg:min-h-0 lg:flex-1 lg:justify-center lg:py-9 xl:py-10">
         <div className="grid min-h-0 w-full min-w-0 max-w-full auto-rows-min items-start justify-items-stretch gap-y-7 gap-x-0 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8 xl:gap-x-12">
-          <div className="order-1 flex min-h-0 w-full min-w-0 max-w-full flex-col justify-center justify-self-center px-0.5 sm:px-0 lg:order-none lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
+          <div className="order-2 flex min-h-0 w-full min-w-0 max-w-full flex-col justify-center justify-self-center px-0.5 sm:px-0 lg:order-none lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
             <motion.div
               initial={{opacity: 0, x: -28}}
               animate={{opacity: 1, x: 0}}
@@ -128,7 +128,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <div className="order-2 flex min-h-0 w-full min-w-0 max-w-lg flex-col items-center justify-center justify-self-center px-0.5 sm:max-w-xl sm:px-0 lg:order-none lg:col-span-6 lg:col-start-7 lg:max-w-none lg:items-stretch lg:justify-self-stretch lg:pl-1 lg:pr-2 xl:pl-2 xl:pr-3">
+          <div className="order-1 flex min-h-0 w-full min-w-0 max-w-lg flex-col items-center justify-center justify-self-center px-0.5 sm:max-w-xl sm:px-0 lg:order-none lg:col-span-6 lg:col-start-7 lg:max-w-none lg:items-stretch lg:justify-self-stretch lg:pl-1 lg:pr-2 xl:pl-2 xl:pr-3">
             <motion.div
               initial={{opacity: 0, scale: 0.98, y: 20}}
               animate={{opacity: 1, scale: 1, y: 0}}
