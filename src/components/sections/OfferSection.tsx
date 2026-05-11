@@ -57,63 +57,83 @@ export function OfferSection() {
             <div className="pointer-events-none absolute inset-0 -z-10 bg-accent/15 blur-[80px] opacity-40 sm:opacity-50" aria-hidden="true" />
 
             <div className="offer-card-glow group/card relative w-full max-w-lg ring-1 ring-inset ring-white/[0.06]">
-              <div className="pointer-events-none absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 transition-opacity group-hover/card:opacity-100" />
+              <div
+                className="pointer-events-none absolute -inset-px rounded-[2.05rem] bg-[linear-gradient(135deg,rgba(218,119,89,0.55),rgba(255,255,255,0.06),rgba(218,119,89,0.28))] opacity-45 blur-[18px]"
+                aria-hidden="true"
+              />
+              <div className="pointer-events-none absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-transparent via-accent/45 to-transparent opacity-0 transition-opacity group-hover/card:opacity-100" />
+              <div className="relative">
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5">
+                    <span className="label-nano tracking-widest text-white/70">ACESSO COMPLETO</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 text-accent">
+                    <Zap className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="label-nano tracking-widest">MAIS PROCURADO</span>
+                  </div>
+                </div>
 
-              <div className="mb-10 text-center sm:mb-12">
-                <div className="mb-2 flex items-center justify-center gap-2">
-                  <span className="mt-8 self-start text-2xl font-bold text-white/30">R$</span>
-                  <div className="flex flex-col items-center">
-                    <span className="mb-[-8px] text-3xl font-bold tracking-wide text-white/10 line-through">497,90</span>
-                    <div className="flex items-baseline">
-                      <span className="price-display">197</span>
-                      <div className="ml-2 flex translate-y-[-10px] flex-col items-start sm:translate-y-[-20px]">
-                        <span className="font-display text-3xl font-bold text-accent sm:text-4xl">,90</span>
-                        <span className="label-micro font-bold tracking-widest text-white/40">Único</span>
+                <div className="mb-10 text-center sm:mb-12">
+                  <p className="label-micro mb-3 tracking-[0.32em] text-white/50">INVESTIMENTO</p>
+                  <div className="mb-3 flex items-end justify-center gap-2">
+                    <span className="mb-5 text-xl font-bold text-white/35 sm:mb-7">R$</span>
+                    <div className="flex flex-col items-center">
+                      <span className="mb-1 text-sm font-semibold tracking-wide text-white/30 line-through sm:text-base">
+                        de 497,90
+                      </span>
+                      <div className="flex items-baseline">
+                        <span className="price-display">197</span>
+                        <span className="ml-1 font-display text-3xl font-bold text-accent sm:text-4xl">,90</span>
+                      </div>
+                      <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1">
+                        <span className="label-nano tracking-widest text-white/70">PAGAMENTO ÚNICO</span>
+                        <span className="text-white/25">•</span>
+                        <span className="label-nano tracking-widest text-accent/90">ACESSO IMEDIATO</span>
                       </div>
                     </div>
                   </div>
+                  <p className="label-micro tracking-[0.22em] text-accent/90">Garantia incondicional de 7 dias</p>
                 </div>
-                <p className="label-micro mb-4 tracking-[0.3em] text-accent">Pagamento único</p>
-              </div>
 
-              <div className="mb-10 space-y-5 sm:mb-12">
-                {includedItems.map((item) => (
-                  <div
-                    key={item}
-                    className="label-micro flex items-center justify-between border-b border-white/[0.06] pb-4 tracking-[0.12em] text-white/45 sm:text-xs"
-                  >
-                    <span>{item}</span>
-                    <span className="text-white/90">Incluso</span>
+                <div className="mb-10 sm:mb-12">
+                  <p className="label-micro mb-4 tracking-[0.32em] text-white/50">O QUE VOCÊ RECEBE</p>
+                  <ul className="space-y-3">
+                    {includedItems.map((item) => (
+                      <li key={item} className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                        <span className="text-sm font-medium leading-relaxed text-white/75">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <a
+                  href={checkoutUrl}
+                  rel={checkoutUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  target={checkoutUrl.startsWith('http') ? '_blank' : undefined}
+                  className="btn-gold-offer group flex items-center justify-center gap-3"
+                >
+                  <Zap className="h-5 w-5 shrink-0 transition-transform group-hover:scale-125" aria-hidden="true" />
+                  <span className="relative z-10 text-sm sm:text-base">GARANTIR MEU ACESSO</span>
+                  <div className="absolute inset-0 translate-y-full bg-black/[0.07] transition-transform duration-500 group-hover:translate-y-0" />
+                </a>
+
+                <div className="mt-8 flex items-center justify-center gap-3">
+                  <div className="flex items-center gap-1 opacity-45 grayscale transition-all hover:grayscale-0">
+                    <Lock className="h-3 w-3 text-white" aria-hidden="true" />
+                    <span className="label-nano tracking-widest text-white/80">SSL Encrypted</span>
                   </div>
-                ))}
-              </div>
-
-              <a
-                href={checkoutUrl}
-                rel={checkoutUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-                target={checkoutUrl.startsWith('http') ? '_blank' : undefined}
-                className="btn-gold-offer group flex items-center justify-center gap-3"
-              >
-                <Zap className="h-5 w-5 shrink-0 transition-transform group-hover:scale-125" aria-hidden="true" />
-                <span className="relative z-10 text-sm sm:text-base">GARANTIR MEU ACESSO</span>
-                <div className="absolute inset-0 translate-y-full bg-black/[0.07] transition-transform duration-500 group-hover:translate-y-0" />
-              </a>
-
-              <div className="mt-8 flex items-center justify-center gap-3">
-                <div className="flex items-center gap-1 opacity-40 grayscale transition-all hover:grayscale-0">
-                  <Lock className="h-3 w-3 text-white" aria-hidden="true" />
-                  <span className="label-nano tracking-widest text-white/80">SSL Encrypted</span>
+                  <div className="h-4 w-px bg-white/15" />
+                  <div className="flex items-center gap-1 opacity-45">
+                    <ShieldCheck className="h-3 w-3 text-white" aria-hidden="true" />
+                    <span className="label-nano tracking-widest text-white/80">Hotmart Secure</span>
+                  </div>
                 </div>
-                <div className="h-4 w-px bg-white/15" />
-                <div className="flex items-center gap-1 opacity-40">
-                  <ShieldCheck className="h-3 w-3 text-white" aria-hidden="true" />
-                  <span className="label-nano tracking-widest text-white/80">Hotmart Secure</span>
-                </div>
-              </div>
 
-              <p className="label-micro mt-6 text-center text-white/50">
-                Pagamento seguro · Acesso pela plataforma · Garantia de 7 dias
-              </p>
+                <p className="label-micro mt-6 text-center text-white/55">
+                  Pagamento seguro · Acesso pela plataforma · Garantia de 7 dias
+                </p>
+              </div>
             </div>
           </div>
         </div>
