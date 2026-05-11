@@ -17,7 +17,9 @@
 - Base de layout e espaçamento: `.layout-container`, `.section-base`, `.section-tall`, `.section-xl` (ritmo vertical em `design/design-system.md`). Hero: **`h-dvh`** no `<header>`, flex centro–centro no miolo — ver `design/hero-layout-e-fundos-escuros.md`.
 - Base de cartões: `.card-premium`, `.card-premium-lg`, `.card-premium-flush`, `.card-dark`, `.card-dark-flush`.
 - Base tipográfica de microcopy: `.label-micro`, `.label-nano`, `.label-ultra`, `.technical-label`, `.metadata-text`.
+- **Rodapés**: classes `.footer-dark-*` (landing em fundo escuro) e `.footer-light-*` (páginas legais em fundo claro) em `src/index.css` — preferir a elas em vez de misturar `metadata-text` (mono) no footer da landing.
 - Escala global da landing: `html { font-size: 80%; }` com exceções em `.scale-exempt` (miolo da hero no `layout-container` e footer).
+- Rotas legais: `/termos`, `/privacidade` (`react-router-dom`); deploy estático precisa de fallback SPA (ver `README.md` na raiz).
 - Antes de merge visual, revisar `docs/design/design-system.md` e checklist em `docs/copy-e-secoes.md`.
 
 ## Referências arquivadas

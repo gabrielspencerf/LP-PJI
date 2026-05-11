@@ -32,6 +32,7 @@ Manual de identidade visual e padrões de implementação da landing.
   - `.label-ultra`
   - `.technical-label`
   - `.metadata-text`
+- Rodapé (sans, padronizado): `.footer-dark-brand`, `.footer-dark-nav`, `.footer-dark-disclaimer`, `.footer-dark-meta` (landing sobre fundo escuro); `.footer-light-meta`, `.footer-light-nav` (páginas legais em `LegalLayout`).
 
 ## Ritmo vertical das seções
 

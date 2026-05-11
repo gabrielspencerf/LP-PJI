@@ -1,6 +1,6 @@
 # Especificação leve — LP-PJI
 
-Landing estática de marketing para o produto **Protocolo Claude Jurídico** (treinamento prático para uso assistido de IA na advocacia).
+SPA de marketing para o produto **Protocolo Claude Jurídico** (treinamento prático para uso assistido de IA na advocacia).
 
 O mecanismo interno apresentado na copy é o **Protocolo Jurisprudência Inteligente**.
 
@@ -9,17 +9,19 @@ O mecanismo interno apresentado na copy é o **Protocolo Jurisprudência Intelig
 - **React 19** + **TypeScript**
 - **Vite 6** (porta `3000`, host `0.0.0.0`)
 - **Tailwind CSS 4** via `@tailwindcss/vite`
+- **react-router-dom 7** (rotas `/`, `/termos`, `/privacidade`)
 - **Motion** (`motion/react`)
 - **Lucide React**
 
-Sem backend no repositório. A aplicação é 100% front-end.
+Sem backend no repositório. A aplicação é 100% front-end (SPA).
 
 ## Convenções técnicas
 
 - Alias interno: `@/*` → `src/*`.
 - Padrão de import: `@/components/*`, `@/hooks/*`, `@/config/*`.
 - Animação de entrada via hook `useRevealOnScroll`.
-- Checkout controlado por `VITE_CHECKOUT_URL` + `src/config/site.ts`.
+- Checkout: `VITE_CHECKOUT_URL` + `src/config/site.ts`.
+- Páginas legais: `VITE_SITE_CONTACT_EMAIL` (opcional) para contato na política de privacidade.
 
 ## Estrutura de pastas (resumo)
 
@@ -27,17 +29,25 @@ Sem backend no repositório. A aplicação é 100% front-end.
 LP-PJI/
 ├── docs/
 ├── public/
+│   ├── _redirects              # Netlify: fallback SPA
 │   ├── favicon.svg
-│   └── media/modules/          # thumbs e vídeos 16:9 dos módulos
+│   └── media/
+│       ├── brands/             # SVGs da faixa de ecossistema (hero)
+│       └── modules/            # thumbs (e futuros clipes) 16:9 dos módulos
 ├── src/
 │   ├── components/
-│   │   ├── layout/             # Footer (Navbar desativada na página; componente mantido no repo)
+│   │   ├── icons/              # Ícones React (ex.: ClaudeLogo)
+│   │   ├── layout/             # Footer, LegalLayout, ClosingSiteBlock; Navbar.tsx presente mas fora da árvore atual da landing
+│   │   ├── routing/            # ScrollToTop
 │   │   ├── sections/           # Seções comerciais da landing
 │   │   └── ui/                 # SectionTitle e peças reutilizáveis
 │   ├── config/site.ts
 │   ├── hooks/useRevealOnScroll.ts
-│   ├── App.tsx
+│   ├── pages/                  # LandingPage, TermsPage, PrivacyPage
+│   ├── App.tsx                 # Rotas
+│   ├── main.tsx                # BrowserRouter
 │   └── index.css
+├── vercel.json                 # Rewrite SPA (Vercel)
 └── index.html
 ```
 
@@ -57,7 +67,15 @@ LP-PJI/
 12. CTA final
 13. Footer
 
-## Âncoras principais
+## Rotas da SPA
+
+| Rota | Conteúdo |
+|------|----------|
+| `/` | Landing completa (`LandingPage.tsx`) |
+| `/termos` | Termos de uso (`TermsPage.tsx` + `LegalLayout`) |
+| `/privacidade` | Política de privacidade (`PrivacyPage.tsx` + `LegalLayout`) |
+
+## Âncoras principais (na landing)
 
 | Âncora | Conteúdo |
 |--------|----------|
@@ -99,3 +117,5 @@ LP-PJI/
 | Compliance | Copy revisada para linguagem jurídica segura |
 | Reestruturação comercial | Nova ordem de seções e programa detalhado |
 | Refino visual | Escala global reduzida + ajustes de header/footer/cards |
+| Legal + rotas | `react-router-dom`, `/termos`, `/privacidade`, deploy SPA (`vercel.json`, `_redirects`) |
+| Rodapé | Tipografia sans padronizada (classes `.footer-dark-*` / `.footer-light-*`) |

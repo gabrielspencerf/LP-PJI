@@ -1,5 +1,6 @@
 {
   "name": "lp-protocolo-ij",
+  "description": "Landing SPA — Protocolo Claude Jurídico (React, Vite, Tailwind, rotas /termos e /privacidade).",
   "private": true,
   "version": "0.0.0",
   "type": "module",

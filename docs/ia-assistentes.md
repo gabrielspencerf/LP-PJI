@@ -4,7 +4,7 @@ Use este arquivo como **contexto fixo** ao pedir alterações no repositório LP
 
 ## O que é o projeto
 
-Landing **estática** em React/Vite para o produto **Protocolo Claude Jurídico**.  
+SPA em React/Vite para o produto **Protocolo Claude Jurídico** (landing em `/` e páginas legais em `/termos` e `/privacidade`).  
 O mecanismo interno na copy é **Protocolo Jurisprudência Inteligente**.
 
 Não existe API server-side no repo; não inventar endpoints ou integração Gemini/Google a menos que o código já mostre isso.
@@ -13,14 +13,19 @@ Não existe API server-side no repo; não inventar endpoints ou integração Gem
 
 | Objetivo | Arquivo principal |
 |----------|-------------------|
-| Ordem das seções na página | `src/App.tsx` |
+| Rotas (`/`, `/termos`, `/privacidade`) | `src/App.tsx` + `src/main.tsx` (`BrowserRouter`) |
+| Ordem das seções da landing | `src/pages/LandingPage.tsx` |
 | Conteúdo por bloco | `src/components/sections/*.tsx` |
-| Navbar / rodapé | `src/components/layout/` |
-| Título SEO, meta, OG | `index.html` |
-| Link do checkout (build) | `.env` → `VITE_CHECKOUT_URL` + `src/config/site.ts` |
+| Termos / privacidade | `src/pages/TermsPage.tsx`, `src/pages/PrivacyPage.tsx`, `src/components/layout/LegalLayout.tsx` |
+| Navbar / rodapé / bloco final escuro | `src/components/layout/` |
+| Título SEO, meta, OG | `index.html` (abas legais ajustam `document.title` em runtime) |
+| Checkout e textos centrais | `.env` → `VITE_CHECKOUT_URL` + `src/config/site.ts` |
+| E-mail opcional (LGPD na política) | `VITE_SITE_CONTACT_EMAIL` + `getSiteContactEmail()` em `site.ts` |
 | Cores, fontes, classes globais | `src/index.css` |
 | Opções do Vite / build | `vite.config.ts` |
+| Fallback SPA em deploy | `vercel.json`, `public/_redirects` |
 | Mídia dos módulos (thumbs/vídeos) | `public/media/modules/` + `src/components/sections/ProgramSection.tsx` |
+| Marcas da faixa da hero | `public/media/brands/` + `HeroEcosystemStrip.tsx` |
 
 ## Convenções de import
 

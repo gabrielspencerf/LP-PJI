@@ -60,3 +60,9 @@ Evitar naming antigo como principal (“Protocolo IJ”, “Master Edition”, e
 
 - `#metodo`, `#riscos`, `#fluxo`, `#programa`, `#faq`, `#oferta`.
 - Revisar navegação quando renomear IDs.
+
+## Rotas legais (fora da landing)
+
+- `/termos` — Termos de uso (texto modelo; validar com advogado).
+- `/privacidade` — Política de privacidade (LGPD em linhas gerais; validar com advogado).
+- Links no rodapé da landing e no `LegalLayout` devem manter-se alinhados a estas rotas.
