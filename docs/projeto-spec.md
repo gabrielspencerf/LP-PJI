@@ -1,85 +1,101 @@
 # Especificação leve — LP-PJI
 
-Projeto **simples**: uma landing estática de marketing para o **Protocolo Jurisprudência Inteligente (Protocolo IJ)** — método de uso de IA (Claude) na advocacia com foco em auditoria e redução de risco.
+Landing estática de marketing para o produto **Protocolo Claude Jurídico** (treinamento prático para uso assistido de IA na advocacia).
+
+O mecanismo interno apresentado na copy é o **Protocolo Jurisprudência Inteligente**.
 
 ## Stack
 
 - **React 19** + **TypeScript**
-- **Vite 6** (dev server porta `3000`, host `0.0.0.0`)
+- **Vite 6** (porta `3000`, host `0.0.0.0`)
 - **Tailwind CSS 4** via `@tailwindcss/vite`
-- **Motion** (`motion/react`) para animações
-- **Lucide React** para ícones
+- **Motion** (`motion/react`)
+- **Lucide React**
 
-Não há backend nem chamadas a API no código atual; a página é 100% cliente.
+Sem backend no repositório. A aplicação é 100% front-end.
 
 ## Convenções técnicas
 
-- Alias de import: `@/*` aponta para `src/*` (configurado em `vite.config.ts` e `tsconfig.json`).
-- Padrão preferido de import interno: `@/components/*`, `@/hooks/*`, `@/config/*`.
-- Revelação de elementos com animação: hook `useRevealOnScroll` em `src/hooks/useRevealOnScroll.ts`.
+- Alias interno: `@/*` → `src/*`.
+- Padrão de import: `@/components/*`, `@/hooks/*`, `@/config/*`.
+- Animação de entrada via hook `useRevealOnScroll`.
+- Checkout controlado por `VITE_CHECKOUT_URL` + `src/config/site.ts`.
 
-## Estrutura de pastas
+## Estrutura de pastas (resumo)
 
-```
+```text
 LP-PJI/
-├── docs/                      # Spec, design system, copy, IA, logs
+├── docs/
 ├── public/
-│   └── favicon.svg            # Ícone servido em /
+│   ├── favicon.svg
+│   └── media/modules/          # thumbs e vídeos 16:9 dos módulos
 ├── src/
 │   ├── components/
-│   │   ├── icons/             # ClaudeLogo, etc.
-│   │   ├── layout/            # Navbar, Footer
-│   │   ├── sections/          # Hero, Método, Riscos, Fluxo, Depoimento, FAQ, Oferta
-│   │   └── ui/                # SectionTitle e peças reutilizáveis
-│   ├── config/
-│   │   └── site.ts            # Textos/links centralizados (checkout via VITE_*)
-│   ├── hooks/
-│   │   └── useRevealOnScroll.ts
-│   ├── App.tsx                # Composição da página + acessibilidade
-│   ├── main.tsx
-│   ├── index.css              # Tokens @theme + classes globais
-│   └── vite-env.d.ts          # Tipos das env VITE_*
-├── index.html                 # Meta SEO / OG básicos + favicon
-├── vite.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md
+│   │   ├── layout/             # Footer (Navbar desativada na página; componente mantido no repo)
+│   │   ├── sections/           # Seções comerciais da landing
+│   │   └── ui/                 # SectionTitle e peças reutilizáveis
+│   ├── config/site.ts
+│   ├── hooks/useRevealOnScroll.ts
+│   ├── App.tsx
+│   └── index.css
+└── index.html
 ```
 
-## Mapa da página (âncoras)
+## Sequência atual da página
+
+1. Hero
+2. Manifesto
+3. Problema
+4. Transformação
+5. Mecanismo (Protocolo Jurisprudência Inteligente)
+6. Entregáveis
+7. Programa (accordion com mídia 16:9 por módulo)
+8. Para quem é / não é
+9. Oferta
+10. Garantia (7 dias)
+11. FAQ
+12. CTA final
+13. Footer
+
+## Âncoras principais
 
 | Âncora | Conteúdo |
 |--------|----------|
-| `#` / topo | Navbar + Hero |
-| `#metodo` | Método vs ferramenta + grid de pilares |
-| `#riscos` | Cartões de risco (imprudência digital) |
-| `#fluxo` | Passos do protocolo + painel ilustrativo |
-| — | Depoimento / prova social (full width escuro) |
-| `#faq` | Accordion FAQ |
-| `#oferta` | Pricing e CTA final |
+| `#metodo` | Manifesto |
+| `#riscos` | Problema |
+| `#fluxo` | Mecanismo |
+| `#programa` | Programa |
+| `#faq` | FAQ |
+| `#oferta` | Oferta |
 
-## Decisões já tomadas
+## Decisões de produto e copy
 
-- Landing organizada em componentes por domínio (`layout`, `sections`, `ui`, `icons`) para facilitar manutenção incremental.
-- Identidade visual centralizada em **`index.css`** (`@theme` + utilitários), com classes semânticas de consistência (`.layout-container`, `.section-*`, `.card-*`, `.label-*`).
-- Boilerplate do **Google AI Studio** foi removido do fluxo de build (sem Gemini obrigatório, sem `metadata.json` na raiz — ver `docs/referencias/ai-studio-metadata.json`).
+- Nome principal da oferta: **Protocolo Claude Jurídico**.
+- Evitar naming antigo como “Protocolo IJ” no conteúdo principal.
+- Comunicação orientada a **uso assistido** de IA, sem promessa de resultado jurídico.
+- Evitar claims absolutos (“zero risco”, “segurança absoluta”, etc.).
 
-## Roadmap / melhorias futuras (sugeridas)
+## Decisões visuais
 
-Prioridade baixa, ordem não rígida:
+- Tokens centralizados em `src/index.css`.
+- Escala global reduzida com `html { font-size: 80%; }`.
+- Exceções de escala (`.scale-exempt`): miolo da hero (`layout-container`) e footer.
+- **Ritmo de seções**: `.section-base` + `.section-tall` / `.section-xl` com valores alinhados (ver `docs/design/design-system.md`).
+- **Hero**: `h-dvh`/`max-h-dvh` no `<header>`, safe-area inferior, flex centro–centro no miolo, grelha 12 colunas em desktop, foto `object-contain` com tetos em `dvh`; detalhe em `docs/design/hero-layout-e-fundos-escuros.md`. Sem navbar fixa na estrutura atual.
+- Cards e seção final ajustados para transição visual contínua.
 
-1. Substituir `href="#"` dos links legais por páginas reais (Termos / Privacidade).
-2. Consolidar auditoria visual periódica para manter uso de classes semânticas e evitar retorno de valores arbitrários.
-3. Testes visuais ou E2E mínimos se o deploy exigir regressão automática.
+## Roadmap curto
 
-## Histórico de mudanças relevantes
+1. Trocar `href="#"` de Termos/Privacidade por rotas reais.
+2. Implementar carregamento real de thumbs e clipes dos módulos em `public/media/modules`.
+3. Opcional: testes visuais por breakpoint para evitar regressão de tipografia/spacing.
 
-| Período | Notas |
-|---------|--------|
-| Base | Criada no AI Studio; migrada para repo limpo com Vite. |
-| Documentação | Pasta `docs/` com design system, copy, logs e guias para IA. |
-| Padronização visual | Introduzidas classes semânticas globais para seções, containers, cards e labels. |
-| Refactor de produção | Componentização completa da página, aliases `@/`, config central de checkout e metadados SEO/OG. |
-| Estabilização visual | Ajustes de consistência em botões/cards e correção de regressões estruturais entre breakpoints. |
+## Histórico resumido
 
-Atualize a linha acima quando houver releases ou mudanças estruturais importantes.
+| Marco | Nota |
+|------|------|
+| Base inicial | Estrutura originada no AI Studio e migrada para Vite/React |
+| Refactor | Componentização completa por seções e layout |
+| Compliance | Copy revisada para linguagem jurídica segura |
+| Reestruturação comercial | Nova ordem de seções e programa detalhado |
+| Refino visual | Escala global reduzida + ajustes de header/footer/cards |

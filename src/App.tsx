@@ -1,12 +1,16 @@
 import {Footer} from '@/components/layout/Footer.tsx';
-import {Navbar} from '@/components/layout/Navbar.tsx';
+import {AudienceSection} from '@/components/sections/AudienceSection.tsx';
+import {DeliverablesSection} from '@/components/sections/DeliverablesSection.tsx';
 import {FAQSection} from '@/components/sections/FAQSection.tsx';
+import {FinalCTASection} from '@/components/sections/FinalCTASection.tsx';
+import {GuaranteeSection} from '@/components/sections/GuaranteeSection.tsx';
 import {Hero} from '@/components/sections/Hero.tsx';
-import {MethodSection} from '@/components/sections/MethodSection.tsx';
+import {ManifestoSection} from '@/components/sections/ManifestoSection.tsx';
 import {OfferSection} from '@/components/sections/OfferSection.tsx';
-import {RiskSection} from '@/components/sections/RiskSection.tsx';
-import {StepsSection} from '@/components/sections/StepsSection.tsx';
-import {TestimonialSection} from '@/components/sections/TestimonialSection.tsx';
+import {ProblemSection} from '@/components/sections/ProblemSection.tsx';
+import {ProgramSection} from '@/components/sections/ProgramSection.tsx';
+import {ProtocolSection} from '@/components/sections/ProtocolSection.tsx';
+import {TransformationSection} from '@/components/sections/TransformationSection.tsx';
 import {useRevealOnScroll} from '@/hooks/useRevealOnScroll.ts';
 
 export default function App() {
@@ -20,16 +24,19 @@ export default function App() {
       >
         Pular para o conteúdo principal
       </a>
-      <Navbar />
-
       <main id="main-content" className="outline-none" tabIndex={-1}>
         <Hero />
-        <MethodSection />
-        <RiskSection />
-        <StepsSection />
-        <TestimonialSection />
-        <FAQSection />
+        <ManifestoSection />
+        <ProblemSection />
+        <TransformationSection />
+        <ProtocolSection />
+        <DeliverablesSection />
+        <ProgramSection />
+        <AudienceSection />
         <OfferSection />
+        <GuaranteeSection />
+        <FAQSection />
+        <FinalCTASection />
       </main>
 
       <Footer />

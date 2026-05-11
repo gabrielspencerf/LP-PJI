@@ -8,31 +8,43 @@ export function FAQSection() {
 
   const qna = [
     {
-      q: 'Quais áreas do direito o protocolo atende?',
-      a: 'O método é agnóstico e estrutural. Ele foca nos princípios de fundamentação jurídica, pesquisa jurisprudencial avançada e revisão dialética, sendo aplicável com excelência do Direito Civil e Empresarial ao Penal Estratégico, especialmente em peças destinadas a Tribunais Superiores (STJ e STF).',
+      q: 'O curso substitui pesquisa jurídica?',
+      a: 'Não. O curso ensina a usar Claude como apoio de análise, organização e redação. A conferência de fonte, tese e aplicação continua sendo responsabilidade do advogado.',
     },
     {
-      q: 'O protocolo é atualizado para o Claude 3.5 Sonnet?',
-      a: "Sim. O método é nativamente otimizado para as capacidades de 'computer use' e raciocínio lógico avançado da família Claude 3.5. Exploramos a janela de contexto de 200k tokens para garantir que o modelo processe volumes maciços de provas sem perder a coerência argumentativa.",
+      q: 'O Claude vai buscar jurisprudência sozinho?',
+      a: 'Não é esse o fluxo recomendado. O advogado deve buscar a decisão em fonte oficial e usar Claude para resumir, comparar e organizar a análise.',
     },
     {
-      q: 'O acesso à biblioteca de prompts é vitalício?',
-      a: 'Exatamente. Ao garantir sua vaga, você recebe acesso vitalício à nossa Central de Inteligência, que inclui a biblioteca completa de engenharia de instruções e atualizações garantidas para todos os novos modelos lançados em 2026, mantendo sua operação sempre no estado da arte.',
+      q: 'Preciso saber programar?',
+      a: 'Não. O treinamento é prático e focado no uso de Claude com prompts, checklists e organização de contexto.',
     },
     {
-      q: 'Como funciona a garantia de higidez jurídica?',
-      a: 'Oferecemos 7 dias de garantia incondicional via Hotmart. Além disso, o protocolo é desenhado para que a IA nunca tenha a palavra final; o sistema impõe camadas de auditoria humana que garantem a segurança técnica, ética e a higidez absoluta de cada petição gerada.',
+      q: 'Posso usar em qualquer área do direito?',
+      a: 'Sim. O método é estrutural. Os exemplos podem variar, mas briefing, anonimização, validação de fonte e revisão humana se aplicam em diferentes áreas.',
+    },
+    {
+      q: 'Posso inserir dados reais de clientes?',
+      a: 'O treinamento ensina critérios para evitar exposição indevida. Dados sensíveis devem ser tratados, anonimizados ou removidos conforme o caso.',
+    },
+    {
+      q: 'O curso promete resultado em processo?',
+      a: 'Não. O curso não promete resultado jurídico, processual ou financeiro. Ele ensina um método de uso assistido de IA.',
+    },
+    {
+      q: 'Existe garantia?',
+      a: 'Sim. São 7 dias de garantia, conforme as regras da plataforma de pagamento.',
     },
   ];
 
   return (
-    <section id="faq" className="section-base section-tall bg-white reveal" aria-labelledby="heading-faq">
+    <section id="faq" className="section-base section-tall bg-bg-soft reveal" aria-labelledby="heading-faq">
       <div className="layout-container max-w-4xl">
-        <SectionTitle eyebrow="SUPORTE TÉCNICO" title="Perguntas Frequentes" id="heading-faq" />
+        <SectionTitle eyebrow="OBJEÇÕES REAIS" title="Perguntas frequentes" id="heading-faq" />
 
         <div className="space-y-6">
           {qna.map((item, idx) => (
-            <div key={idx} className="card-premium card-premium-flush overflow-hidden">
+            <div key={idx} className="card-premium card-premium-flush overflow-hidden bg-white">
               <button
                 type="button"
                 onClick={() => setOpen(open === idx ? null : idx)}

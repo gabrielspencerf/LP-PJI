@@ -1,171 +1,183 @@
 import {motion} from 'motion/react';
-import {
-  BookOpen,
-  Fingerprint,
-  Gavel,
-  Lock,
-  MessageSquare,
-  PlayCircle,
-  ShieldCheck,
-} from 'lucide-react';
+import {Building2, GraduationCap, PlayCircle} from 'lucide-react';
+import type {LucideIcon} from 'lucide-react';
 import {ClaudeLogo} from '@/components/icons/ClaudeLogo.tsx';
+import {HeroEcosystemStrip} from '@/components/sections/HeroEcosystemStrip.tsx';
+
+const HERO_FOUNDERS_SRC = '/media/hero-founders-duo.webp';
+const HERO_IMG_W = 1202;
+const HERO_IMG_H = 888;
+
+function FounderBadge({
+  name,
+  lines,
+  icon: Icon,
+  className,
+  delay = 0,
+}: {
+  name: string;
+  lines: string[];
+  icon: LucideIcon;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{opacity: 0, y: 12}}
+      animate={{opacity: 1, y: 0}}
+      transition={{duration: 0.5, ease: 'easeOut', delay}}
+      className={className}
+    >
+      <div className="rounded-2xl border border-white/20 bg-black/45 p-3.5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.75)] ring-1 ring-inset ring-white/[0.07] backdrop-blur-xl sm:p-4">
+        <div className="flex items-start gap-2.5">
+          <div
+            className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-accent/35 bg-accent/15 text-accent"
+            aria-hidden="true"
+          >
+            <Icon className="h-4 w-4" strokeWidth={2} />
+          </div>
+          <div className="min-w-0">
+            <p className="font-display text-sm font-semibold leading-tight text-white">{name}</p>
+            {lines.map((line) => (
+              <p key={line} className="mt-1 text-[11px] sm:text-xs leading-snug text-white/60">
+                {line}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Hero() {
   return (
-    <header className="section-hero relative overflow-hidden bg-white">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-40">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand/5 blur-[120px] rounded-full" />
+    <header className="relative flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden bg-[#050505] pb-[env(safe-area-inset-bottom,0px)] text-white">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute inset-0 opacity-[0.38] [background-size:3.5px_3.5px]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at center, rgba(150, 72, 52, 0.38) 0.55px, transparent 0.6px)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.07] via-transparent to-transparent" />
+        <div className="absolute top-[8%] left-[-8%] h-[min(52vw,28rem)] w-[min(52vw,28rem)] rounded-full bg-accent/30 blur-[100px] opacity-35" />
+        <div className="absolute top-[18%] right-[-12%] h-[min(60vw,32rem)] w-[min(60vw,32rem)] rounded-full bg-orange-500/25 blur-[120px] opacity-30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_100%,rgba(218,119,89,0.12),transparent_58%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_35%,rgba(255,255,255,0.04),transparent_70%)]" />
       </div>
 
-      <div className="layout-container relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          <div className="lg:col-span-7">
+      <div className="layout-container scale-exempt relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center py-6 sm:py-8 lg:min-h-0 lg:py-9 xl:py-10">
+        <div className="grid min-h-0 w-full min-w-0 auto-rows-min items-center justify-items-center gap-y-9 gap-x-0 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8 xl:gap-x-12">
+          <div className="flex min-h-0 w-full max-w-xl flex-col justify-center justify-self-center lg:col-span-6 lg:max-w-none lg:justify-self-stretch">
             <motion.div
-              initial={{opacity: 0, x: -30}}
+              initial={{opacity: 0, x: -28}}
               animate={{opacity: 1, x: 0}}
-              transition={{duration: 0.8, ease: 'easeOut'}}
+              transition={{duration: 0.75, ease: 'easeOut'}}
+              className="w-full lg:max-w-none"
             >
-              <div className="flex items-center gap-4 mb-8 sm:mb-10">
-                <div className="accent-rule" aria-hidden="true" />
-                <div className="flex items-center gap-3">
-                  <span className="label-micro text-accent">MASTER Edition • 2026</span>
-                  <div className="h-4 w-[1px] bg-accent/20" />
-                  <div className="flex items-center gap-1.5">
-                    <ClaudeLogo className="w-3.5 h-3.5 text-brand" />
-                    <span className="label-micro font-bold text-brand/40 tracking-widest">Anthropic Optimized</span>
-                  </div>
-                </div>
+              <div className="mb-6 flex items-center gap-4 sm:mb-8">
+                <div className="h-[2px] w-12 bg-accent/60" aria-hidden="true" />
+                <span className="label-micro text-accent">Método prático para advogados que usam IA</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-display font-semibold text-brand leading-[1.1] sm:leading-[1.05] tracking-tight mb-10">
-                A Nova ERA da <br />
-                <span className="text-accent italic decoration-accent/20 underline underline-offset-[16px]">Advocacia</span>.
+              <h1 className="mb-4 font-display text-[2.35rem] font-semibold leading-[1.02] tracking-[-0.02em] sm:mb-6 sm:text-[2.65rem] lg:text-[3.1rem] xl:text-[3.45rem]">
+                <span className="block text-white">
+                  O Claude / GPT{' '}
+                  <span className="text-white/90">não têm OAB.</span>
+                </span>
+                <span className="mt-2 block bg-gradient-to-r from-accent via-[#e8a090] to-accent bg-clip-text text-transparent sm:mt-3">
+                  Você tem.
+                </span>
               </h1>
 
-              <p className="book-text max-w-xl mb-12 sm:mb-16">
-                O protocolo definitivo para transformar o Claude 3.5 em seu braço operacional tático, garantindo{' '}
-                <span className="text-brand font-bold underline decoration-accent/30 underline-offset-8">higidez técnica</span> e segurança absoluta.
+              <p className="mb-6 max-w-xl text-[0.95rem] leading-relaxed text-white/65 sm:mb-8 sm:text-base">
+                Use Claude, GPT ou outro grande modelo na advocacia com protocolo de briefing, validação de fonte, proteção de dados e revisão humana — antes de virar peça, parecer ou orientação ao cliente.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
-                <a href="#oferta" className="btn-gold-hero group flex items-center justify-center gap-4 relative overflow-hidden transition-all active:scale-95">
-                  <ClaudeLogo className="w-6 h-6 transition-transform group-hover:scale-110" />
-                  <span>INICIAR PROTOCOLO AGORA</span>
-                  <div className="absolute top-0 left-0 w-full h-full bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <HeroEcosystemStrip />
+
+              <div className="flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start">
+                <a
+                  href="#oferta"
+                  className="btn-gold-hero group relative inline-flex min-h-[2.85rem] w-full max-w-sm shrink-0 items-center justify-center overflow-hidden transition-all active:scale-[0.98] sm:w-auto sm:min-h-[3rem]"
+                >
+                  <ClaudeLogo className="h-4 w-4 shrink-0 transition-transform group-hover:scale-110" />
+                  <span className="text-center leading-tight">ACESSAR O PROTOCOLO</span>
+                  <div className="absolute inset-0 -translate-x-full bg-black/[0.06] transition-transform duration-500 group-hover:translate-x-0" />
                 </a>
-                <a href="#metodo" className="flex items-center justify-center gap-4 px-8 py-4 text-brand font-bold text-sm tracking-widest uppercase hover:text-accent transition-all group">
-                  <div className="w-12 h-12 rounded-full border-2 border-brand/10 flex items-center justify-center group-hover:border-accent group-hover:scale-110 transition-all">
-                    <PlayCircle className="w-6 h-6" aria-hidden="true" />
+                <a
+                  href="#metodo"
+                  className="group inline-flex w-full max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md border border-white/16 bg-transparent px-2.5 py-1.5 text-[8px] font-bold uppercase tracking-wide text-white/90 transition-all hover:border-white/28 hover:bg-white/[0.05] hover:text-white sm:w-auto sm:max-w-none sm:gap-2 sm:px-3 sm:py-2 sm:text-[9px]"
+                >
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/18 transition-all group-hover:scale-105 group-hover:border-white/35 sm:h-6 sm:w-6">
+                    <PlayCircle className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
                   </div>
-                  O MÉTODO
+                  VER MÉTODO
                 </a>
               </div>
 
-              <div className="mt-16 sm:mt-20 flex items-center gap-8">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-4 border-white bg-bg-soft flex items-center justify-center label-micro font-bold text-brand shadow-lg"
-                    >
-                      {['R', 'G', 'V', 'A'][i - 1]}
-                    </div>
-                  ))}
-                </div>
-                <p className="label-micro text-muted tracking-widest leading-loose">
-                  <span className="text-brand">+850 Advogados</span> já operam <br /> com o selo de auditoria ativo.
-                </p>
-              </div>
+              <p className="mt-6 max-w-xl text-[8px] font-semibold uppercase leading-relaxed !tracking-[0.04em] text-accent/44 sm:mt-8 sm:text-[8.5px]">
+                Curso gravado · Prompts · Checklists · Fluxos de validação · Sem promessa de resultado jurídico
+              </p>
             </motion.div>
           </div>
 
-          <div className="lg:col-span-5 lg:col-start-8 relative">
+          <div className="flex min-h-0 w-full max-w-lg min-w-0 flex-col items-center justify-center justify-self-center sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:max-w-none lg:items-stretch lg:justify-self-stretch lg:pl-1 lg:pr-2 xl:pl-2 xl:pr-3">
             <motion.div
-              initial={{opacity: 0, scale: 0.9, x: 50}}
-              animate={{opacity: 1, scale: 1, x: 0}}
-              transition={{duration: 1.2, ease: 'easeOut', delay: 0.2}}
-              className="card-dark card-dark-flush hero-panel-shadow border-white/5 group overflow-hidden"
+              initial={{opacity: 0, scale: 0.98, y: 20}}
+              animate={{opacity: 1, scale: 1, y: 0}}
+              transition={{duration: 0.9, ease: 'easeOut', delay: 0.1}}
+              className="relative flex w-full min-w-0 max-w-md flex-col items-center justify-center sm:max-w-lg lg:max-w-none"
             >
-              <div className="bg-white/[0.03] p-8 flex items-center justify-between border-b border-white/5">
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-3 h-3 rounded-full bg-accent animate-pulse accent-glow-strong"
-                    aria-hidden="true"
+              <div
+                className="pointer-events-none absolute inset-x-[6%] bottom-[22%] top-[22%] rounded-[50%] bg-gradient-to-t from-accent/14 via-accent/6 to-transparent opacity-80 blur-3xl"
+                aria-hidden="true"
+              />
+
+              <div className="relative flex w-full min-w-0 flex-col items-center justify-center">
+                <div
+                  className="relative isolate mx-auto w-full max-w-full overflow-hidden rounded-lg px-0.5 sm:px-1 lg:max-w-[min(100%,42rem)]"
+                  style={{
+                    WebkitMaskImage:
+                      'linear-gradient(to bottom, #000 0%, #000 97%, rgba(0,0,0,0.45) 99.2%, transparent 100%)',
+                    maskImage:
+                      'linear-gradient(to bottom, #000 0%, #000 97%, rgba(0,0,0,0.45) 99.2%, transparent 100%)',
+                  }}
+                >
+                  <img
+                    src={HERO_FOUNDERS_SRC}
+                    alt="Gabriel Spencer e Vitor Paim, instrutores do Protocolo Claude Jurídico."
+                    width={HERO_IMG_W}
+                    height={HERO_IMG_H}
+                    decoding="async"
+                    fetchPriority="high"
+                    className={[
+                      'relative z-[1] mx-auto block h-auto w-full max-w-full object-contain object-center',
+                      'max-h-[min(42dvh,24rem)]',
+                      'sm:max-h-[min(40dvh,26rem)]',
+                      'md:max-h-[min(38dvh,28rem)]',
+                      'lg:max-h-[min(44dvh,32rem)]',
+                      'xl:max-h-[min(46dvh,34rem)]',
+                      '2xl:max-h-[min(48dvh,36rem)]',
+                    ].join(' ')}
                   />
-                  <span className="label-micro text-white/50 tracking-[0.3em]">
-                    Protocol: Active_Flow_Monitor
-                  </span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="label-micro items-center gap-2 text-white/30 tracking-widest hidden sm:flex">
-                    SECURE_LAYER_X12
-                  </div>
-                  <ShieldCheck className="w-6 h-6 text-accent" aria-hidden="true" />
-                </div>
-              </div>
-
-              <div className="p-10 sm:p-14 space-y-10">
-                <div className="flex items-center gap-6 group/item">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border shadow-2xl bg-accent/10 border-accent/20 text-accent group-hover/item:scale-110">
-                    <ClaudeLogo className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-display font-bold tracking-tight text-white">Claude Integration</div>
-                    <div className="metadata-text mt-1 italic">Active Intelligence Layer</div>
-                  </div>
                 </div>
 
-                {[
-                  {icon: Gavel, t: 'Qualificação Fática', s: 'Concluído', c: 'accent', time: '09:42 AM', progress: 100},
-                  {icon: MessageSquare, t: 'Sondagem Dialética', s: 'Validando', c: 'accent', time: '10:15 AM', progress: 65},
-                  {icon: BookOpen, t: 'Triangulação de Fontes', s: 'Aguardando', c: 'white/20', time: '--:--', progress: 0},
-                ].map((item, idx) => (
-                  <div key={idx} className="flex flex-col gap-4 group/item">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-6">
-                        <div
-                          className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 border shadow-2xl ${item.c === 'accent' ? 'bg-accent/10 border-accent/30 text-accent group-hover/item:scale-110 shadow-accent/10' : 'bg-white/5 border-white/5 text-white/20'}`}
-                        >
-                          <item.icon className="w-7 h-7" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <div
-                            className={`text-lg sm:text-xl font-display font-bold tracking-tight ${item.c === 'accent' ? 'text-white' : 'text-white/20'}`}
-                          >
-                            {item.t}
-                          </div>
-                          <div className="label-micro text-white/30 mt-1">{item.time}</div>
-                        </div>
-                      </div>
-                      <div
-                        className={`label-micro tracking-[0.3em] px-4 py-2 rounded-xl transition-all ${item.c === 'accent' ? 'bg-accent text-brand shadow-lg shadow-accent/20' : 'bg-white/5 text-white/20'}`}
-                      >
-                        {item.s}
-                      </div>
-                    </div>
-                    {item.progress > 0 && (
-                      <div className="h-1 bg-white/5 rounded-full overflow-hidden w-full ml-20">
-                        <motion.div
-                          initial={{width: 0}}
-                          animate={{width: `${item.progress}%`}}
-                          className="h-full bg-accent accent-glow-soft"
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-white/[0.02] p-8 border-t border-white/5 flex items-center justify-center gap-8">
-                <div className="label-micro font-bold text-white/30 tracking-[0.3em] flex items-center gap-4">
-                  <Lock className="w-4 h-4 text-accent" aria-hidden="true" />
-                  AES-256 Protocol
-                </div>
-                <div className="w-[1px] h-4 bg-white/10" />
-                <div className="label-micro font-bold text-white/30 tracking-[0.3em] flex items-center gap-4">
-                  <Fingerprint className="w-4 h-4 text-accent" aria-hidden="true" />
-                  AI_AUTH_ONLY
+                <div className="relative z-[4] -mt-7 grid w-full max-w-md grid-cols-1 justify-items-stretch gap-2.5 px-0.5 sm:-mt-9 sm:max-w-lg sm:grid-cols-2 sm:gap-3 sm:px-0 md:-mt-10 lg:max-w-none lg:-mt-11 lg:grid-cols-2 xl:-mt-12">
+                  <FounderBadge
+                    name="Gabriel Spencer"
+                    lines={['CEO, Creative Lane', 'Estrategista empresarial']}
+                    icon={Building2}
+                    delay={0.35}
+                  />
+                  <FounderBadge
+                    name="Vitor Paim"
+                    lines={['Professor, Asimov Academy', 'Maior escola de Python do Brasil']}
+                    icon={GraduationCap}
+                    delay={0.45}
+                  />
                 </div>
               </div>
             </motion.div>

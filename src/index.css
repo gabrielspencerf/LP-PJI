@@ -8,8 +8,9 @@
   
   --color-brand: #0A0A0A;
   --color-brand-light: #1A1A1A;
-  --color-accent: #C5A059;
-  --color-accent-dark: #A6864B;
+  /* Destaque alinhado ao laranja Claude (Anthropic) */
+  --color-accent: #da7759;
+  --color-accent-dark: #c45f42;
   --color-bg-soft: #F9F9F7;
   --color-cta: #D94B3E;
   --color-border: rgba(0, 0, 0, 0.08);
@@ -17,46 +18,56 @@
   
   --shadow-premium: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-gold: 0 10px 15px -3px rgba(197, 160, 89, 0.2);
+  --shadow-gold: 0 10px 15px -3px rgba(218, 119, 89, 0.22);
   --shadow-inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
+  html {
+    font-size: 80%;
+  }
+
   body {
     @apply bg-white text-brand antialiased selection:bg-accent/30 selection:text-brand transition-colors duration-500 font-sans;
   }
 }
 
 .glass-header {
-  @apply bg-white/80 backdrop-blur-md border-b border-border transition-all duration-500;
+  @apply bg-white/72 backdrop-blur-sm border-b border-border/80 transition-all duration-300;
 }
 
 .layout-container {
   @apply container mx-auto px-4 sm:px-8;
 }
 
+/* Ritmo vertical unificado (harmonia entre seções) */
 .section-base {
-  @apply py-24 sm:py-32;
+  @apply py-12 sm:py-16 lg:py-20;
 }
 
 .section-tall {
-  @apply lg:py-40;
+  @apply lg:py-24;
 }
 
 .section-xl {
-  @apply lg:py-48;
+  @apply lg:py-28;
 }
 
+/* Reservado para blocos que não usam o header full-viewport atual */
 .section-hero {
-  @apply pt-16 sm:pt-20 pb-16 sm:pb-28;
+  @apply pt-8 sm:pt-12;
 }
 
 .card-premium {
-  @apply bg-white border border-brand/[0.04] rounded-2xl p-8 transition-all duration-500 hover:border-accent/40 hover:shadow-heavy hover:-translate-y-1 relative overflow-hidden;
+  @apply bg-white border border-brand/[0.08] rounded-2xl p-5 sm:p-7 transition-all duration-200 relative overflow-hidden shadow-sm;
+}
+
+.card-premium:hover {
+  @apply border-brand/[0.14] shadow-md;
 }
 
 .card-premium-lg {
-  @apply p-10;
+  @apply p-6 sm:p-8;
 }
 
 .card-premium-flush {
@@ -64,7 +75,7 @@
 }
 
 .card-dark {
-  @apply bg-brand border border-white/5 rounded-[2.5rem] p-8 transition-all duration-500 shadow-inner-glow relative overflow-hidden;
+  @apply bg-brand border border-white/10 rounded-3xl p-7 sm:p-8 transition-all duration-300 shadow-inner-glow relative overflow-hidden;
 }
 
 .card-dark-flush {
@@ -76,26 +87,26 @@
 }
 
 .accent-glow-strong {
-  box-shadow: 0 0 15px rgba(197, 160, 89, 1);
+  box-shadow: 0 0 18px rgba(218, 119, 89, 0.95);
 }
 
 .accent-glow-soft {
-  box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+  box-shadow: 0 0 14px rgba(218, 119, 89, 0.45);
 }
 
 .steps-dashboard-shell {
-  @apply relative bg-brand p-4 sm:p-8 shadow-2xl border border-white/10;
-  border-radius: 2.5rem;
+  @apply relative bg-brand p-4 sm:p-7 shadow-xl border border-white/10;
+  border-radius: 2rem;
 }
 
 .steps-processing-glow {
-  box-shadow: 0 0 50px rgba(197, 160, 89, 0.3);
+  box-shadow: 0 0 28px rgba(218, 119, 89, 0.28);
 }
 
 .offer-shell {
-  @apply max-w-7xl mx-auto bg-brand text-white relative overflow-hidden border border-white/5 p-10 sm:p-20 lg:p-28;
+  @apply max-w-7xl mx-auto bg-brand text-white relative overflow-hidden border border-white/8 p-8 sm:p-14 lg:p-20;
   border-radius: 3rem;
-  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 640px) {
@@ -105,53 +116,41 @@
 }
 
 .offer-card-glow {
-  @apply bg-brand border border-white/5 p-8 sm:p-14 transition-all duration-500 shadow-inner-glow relative overflow-hidden;
-  border-radius: 2.5rem;
+  @apply bg-brand border border-white/8 p-6 sm:p-10 transition-all duration-300 shadow-inner-glow relative overflow-hidden;
+  border-radius: 2rem;
 }
 
 .offer-card-glow:hover {
-  box-shadow: 0 0 60px -15px rgba(197, 160, 89, 0.35);
+  box-shadow: 0 0 35px -12px rgba(218, 119, 89, 0.32);
 }
 
 .price-display {
   @apply font-display font-bold text-white tracking-tighter leading-none;
-  font-size: 5rem;
-}
-
-@media (min-width: 640px) {
-  .price-display {
-    font-size: 8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .price-display {
-    font-size: 11rem;
-  }
+  font-size: clamp(4rem, 16vw, 8rem);
 }
 
 .btn-primary {
-  @apply bg-brand text-white px-8 py-4 rounded-xl font-semibold text-[11px] tracking-[0.15em] uppercase transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20;
+  @apply bg-brand text-white px-8 py-4 rounded-xl font-semibold text-[11px] uppercase transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20;
 }
 
 .btn-gold {
-  @apply bg-accent text-white py-5 px-10 rounded-2xl font-semibold text-[12px] tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 flex items-center justify-center gap-3;
+  @apply bg-accent text-white py-5 px-10 rounded-2xl font-semibold text-[12px] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 inline-flex items-center justify-center gap-3;
 }
 
 .btn-primary-nav {
-  @apply bg-brand text-white rounded-xl font-semibold transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20 py-3 px-8 text-xs tracking-widest uppercase hover:shadow-accent/20;
+  @apply bg-brand text-white rounded-xl font-semibold transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20 py-3 px-8 text-xs uppercase hover:shadow-accent/20;
 }
 
 .btn-gold-hero {
-  @apply bg-accent text-white rounded-2xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 py-5 sm:py-6 px-10 text-xs sm:text-sm;
+  @apply bg-accent text-brand rounded-xl font-semibold uppercase tracking-wide transition-all hover:bg-accent-dark hover:text-brand active:translate-y-0 shadow-lg shadow-accent/30 py-3 sm:py-3.5 px-6 sm:px-7 text-[10px] sm:text-[11px] gap-2.5;
 }
 
 .btn-gold-drawer {
-  @apply bg-accent text-white rounded-2xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 py-6 px-10 text-center text-base mt-8;
+  @apply bg-accent text-white rounded-2xl font-semibold uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 py-6 px-10 text-center text-base mt-8;
 }
 
 .btn-gold-offer {
-  @apply bg-accent text-white rounded-3xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-heavy shadow-accent/30 w-full text-center py-6 sm:py-7 px-10 relative overflow-hidden;
+  @apply bg-accent text-brand rounded-3xl font-semibold uppercase tracking-wide transition-all hover:bg-accent-dark hover:text-brand hover:-translate-y-1 active:translate-y-0 shadow-heavy shadow-accent/35 w-full text-center py-6 sm:py-7 px-10 relative overflow-hidden;
 }
 
 .reveal {
@@ -197,7 +196,7 @@
 }
 
 .book-text {
-  @apply font-sans text-base sm:text-lg leading-relaxed opacity-90 text-brand font-light tracking-wide;
+  @apply font-sans text-base leading-relaxed opacity-90 text-brand font-light;
 }
 
 .accent-rule {
@@ -222,4 +221,49 @@
 
 .metadata-text {
   @apply font-mono text-[11px] tracking-widest text-muted opacity-70 uppercase;
+}
+
+.scale-exempt {
+  zoom: 1.25;
+}
+
+@keyframes hero-eco-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.hero-eco-track {
+  display: flex;
+  width: max-content;
+  animation: hero-eco-marquee 38s linear infinite;
+}
+
+.hero-eco-marquee:hover .hero-eco-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eco-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 36rem;
+    justify-content: center;
+    row-gap: 0.75rem;
+    column-gap: 0.75rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

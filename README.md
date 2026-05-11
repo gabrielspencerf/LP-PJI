@@ -1,6 +1,6 @@
-# Protocolo Jurisprudência Inteligente — Landing
+# Protocolo Claude Jurídico — Landing
 
-Landing page estática de alta conversão para o **Protocolo IJ**, construída com React + Vite + Tailwind.
+Landing page estática para o **Protocolo Claude Jurídico**, construída com React + Vite + Tailwind.
 
 Documentação técnica e de conteúdo: **[docs/README.md](./docs/README.md)**.
 
@@ -11,9 +11,11 @@ Esta versão consolidou a base para produção:
 - estrutura modular por domínio (`layout`, `sections`, `ui`, `icons`, `hooks`, `config`);
 - padronização visual em classes semânticas globais (`section-*`, `card-*`, `btn-*`, `label-*`);
 - ajustes de responsividade e consistência entre mobile/tablet/desktop;
-- correção de regressões visuais em cards e botões;
+- compactação de escala visual para aumentar densidade útil nas dobras;
+- nova arquitetura de seções comerciais (manifesto, problema, transformação, mecanismo, entregáveis, programa, público, garantia e CTA final);
+- suporte pronto para thumbnails e clipes 16:9 nos módulos (`public/media/modules`);
 - limpeza do legado do Google AI Studio (arquivo de metadata movido para `docs/referencias`);
-- documentação completa em `docs/` (spec, design system, copy, guias de IA e logs).
+- documentação completa em `docs/` (spec, design system, copy, guias de IA, logs e pacote de próximas atualizações).
 
 ## Stack
 

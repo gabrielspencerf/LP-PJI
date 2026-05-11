@@ -1,84 +1,123 @@
-# Design system — Protocolo Jurisprudência Inteligente
+# Design system — Protocolo Claude Jurídico
 
-Manual de uso da identidade da landing. Tokens vivem principalmente em `src/index.css` (`@theme` + classes utilitárias). Componentes de marca vivem em `src/components/`.
+Manual de identidade visual e padrões de implementação da landing.
 
 ## Princípios visuais
 
-1. **Autoridade técnica** — contraste forte marca escura + ouro; poucos ornamentos, hierarquia clara.
-2. **Precisão** — tipografia sans estável (Montserrat); mono só para metadados e “labels técnicos”.
-3. **Confiança** — bastante branco e cinzas neutros; CTAs em ouro (`accent`) ou vermelho de alerta (`cta`) quando o texto pedir urgência ou risco.
+1. **Sobriedade jurídica**: contraste limpo, pouco ruído ornamental.
+2. **Densidade útil**: cada dobra deve entregar conteúdo real.
+3. **Hierarquia clara**: título, explicação, prova e CTA bem separados.
+4. **Ritmo estrutural**: espaçamentos verticais alinhados entre seções; hero integrada ao viewport sem cortar conteúdo sensível (foto `object-contain`, sem `scale` sobre a imagem).
 
 ## Paleta (tokens CSS)
 
 | Token | Valor | Uso |
 |-------|-------|-----|
-| `--color-brand` | `#0A0A0A` | Texto principal, superfícies escuras (“cards dark”), navbar |
-| `--color-brand-light` | `#1A1A1A` | Hover de botões escuros |
-| `--color-accent` | `#C5A059` | Destaques, CTAs primários (`.btn-gold`), selos, links hover |
-| `--color-accent-dark` | `#A6864B` | Hover do `.btn-gold` |
-| `--color-bg-soft` | `#F9F9F7` | Fundo alternado de seções |
-| `--color-cta` | `#D94B3E` | Alertas, severidade, ênfase “crítico” |
-| `--color-border` | `rgba(0,0,0,0.08)` | Divisórias leves |
+| `--color-brand` | `#0A0A0A` | Texto forte e blocos escuros |
+| `--color-brand-light` | `#1A1A1A` | Hover de botão escuro |
+| `--color-accent` | `#da7759` | CTAs e destaques (laranja Claude) |
+| `--color-accent-dark` | `#c45f42` | Hover dos botões de destaque |
+| `--color-bg-soft` | `#F9F9F7` | Fundo alternado de seção |
+| `--color-cta` | `#D94B3E` | Alertas e risco |
+| `--color-border` | `rgba(0,0,0,0.08)` | Linhas e divisórias |
 | `--color-muted` | `#6B7280` | Texto secundário |
 
-Sombras nomeadas: `--shadow-premium`, `--shadow-heavy`, `--shadow-gold`, `--shadow-inner-glow` — usar nas classes `.card-premium`, `.card-dark`, `.btn-gold` antes de inventar novas sombras.
+## Escala tipográfica
 
-## Tipografia
+- Base global reduzida: `html { font-size: 80%; }`.
+- Exceções de escala: `.scale-exempt` (**miolo** da hero no `layout-container`, não no `<header>`; footer). Navbar desativada na página — pode voltar a usar a mesma regra.
+- Labels oficiais:
+  - `.label-micro`
+  - `.label-nano`
+  - `.label-ultra`
+  - `.technical-label`
+  - `.metadata-text`
 
-| Papel | Fonte | Onde |
-|-------|--------|------|
-| Display / títulos | Montserrat semibold, tracking tight | `font-display` em headings |
-| Corpo “editorial” | Montserrat light/medium, tracking wide | classe `.book-text` |
-| Label técnico | Montserrat, uppercase, tracking amplo | `.technical-label` |
-| Metadados / código | JetBrains Mono, uppercase | `.metadata-text` |
+## Ritmo vertical das seções
 
-Import das fontes: primeira linha de `src/index.css` (Google Fonts). Ao trocar fontes, atualizar `@theme` e esta doc.
+Valores aplicados em `src/index.css` (harmonia entre blocos):
 
-### Escalas oficiais (evitar valores arbitrários repetidos)
+| Classe | Padding vertical |
+|--------|-------------------|
+| `.section-base` | `py-12` → `sm:py-16` → `lg:py-20` |
+| `.section-tall` | + em `lg`: `py-24` (acumula com base no breakpoint `lg`) |
+| `.section-xl` | + em `lg`: `py-28` |
 
-| Classe | Uso |
-|--------|-----|
-| `.label-micro` | Microtexto de interface (`10px`, uppercase, tracking amplo) |
-| `.label-nano` | Nano labels/selos (`9px`, uppercase, tracking mais amplo) |
-| `.label-ultra` | Labels ultra compactas (`8px`, uppercase, tracking widest) |
-| `.technical-label` | Eyebrow técnico de seção |
-| `.metadata-text` | Metadado em mono (`11px`) |
+Uso típico: `section-base` em quase todas; `section-tall` ou `section-xl` onde a secção precisa de mais ar.
 
-## Componentes reutilizáveis (CSS)
+## Classes de estrutura
 
 | Classe | Função |
 |--------|--------|
-| `.glass-header` | Navbar com blur translúcido (layout não fixo) |
-| `.layout-container` | Container horizontal padrão (`px-4 sm:px-8`) |
-| `.section-base` | Espaçamento vertical base (`py-24 sm:py-32`) |
-| `.section-tall` | Extensão vertical grande (`lg:py-40`) |
-| `.section-xl` | Extensão vertical extra (`lg:py-48`) |
-| `.section-hero` | Ritmo próprio do Hero para equilíbrio visual inicial |
-| `.card-premium` | Card claro, borda suave, hover elevado |
-| `.card-premium-lg` | Variação de card claro com padding maior |
-| `.card-premium-flush` | Variação sem padding interno |
-| `.card-dark` | Bloco escuro (simulação de painel / oferta) |
-| `.card-dark-flush` | Variação escura sem padding interno |
-| `.btn-primary` | Botão preenchido escuro (nav desktop) |
-| `.btn-gold` | CTA principal dourado |
-| `.accent-rule` | Linha de destaque padrão em headers/eyebrows |
-| `.reveal` + `.reveal.visible` | Animação de entrada (hook `useRevealOnScroll`, disparado via `App`) |
-| `.animate-float` | Decoração suave (ícones, widget flutuante) |
+| `.layout-container` | `container mx-auto px-4 sm:px-8` |
+| `.section-base` | Espaçamento vertical base (ver tabela acima) |
+| `.section-tall` | Reforço de altura em `lg` |
+| `.section-xl` | Reforço maior em `lg` |
+| `.section-hero` | Reservado; a hero atual não usa esta classe no `header` |
+| `.glass-header` | Header translúcido (quando `Navbar` estiver ativo) |
 
-## Padrões de layout
+## Hero (primeira dobra)
 
-- **Container:** usar `.layout-container` em layout e seções.
-- **Seções:** combinar `.section-base` + (`.section-tall` ou `.section-xl`) conforme densidade; Hero usa `.section-hero`.
-- **Grid de conteúdo:** frequentemente `lg:grid-cols-2` com `gap-16`–`gap-24`.
-- **Acessibilidade:** link “Pular para o conteúdo”, `aria-label` em nav e botões de menu, `aria-expanded` no FAQ.
+Especificação detalhada (viewport, flex centro–centro, breakpoints, dots, CTAs, fundos escuros e checklist): **[hero-layout-e-fundos-escuros.md](./hero-layout-e-fundos-escuros.md)**.
 
-## Marca e terceiros
+Resumo:
 
-- Uso de **“Claude” / Anthropic** é descritivo do produto; manter coerência com o posicionamento legal/ético da copy.
-- Logotipo da aplicação na LP é o ícone de **balança** (`Scale` do Lucide) + wordmark “Protocolo IJ” — não trocar sem atualizar navbar e footer juntos.
+- **`<header>`**: `h-dvh max-h-dvh min-h-0 overflow-hidden`, `bg-[#050505]`, `pb` com safe-area; **sem** `scale-exempt` no header.
+- **`layout-container`**: `scale-exempt`, `flex flex-1 min-h-0 flex-col items-center justify-center` + padding vertical; grelha 1 coluna centrada → `lg:grid-cols-12` com `items-center` e `justify-items-stretch`.
+- **Fundo**: textura de pontos (malha ~3,5px, tom accent escurecido) + gradientes/blobs numa camada `overflow-hidden` interior.
+- **Foto**: `object-contain`, `max-h` em **`dvh`** + `rem` por breakpoint; máscara linear na base; ficheiro `public/media/hero-founders-duo.webp`.
+- **CTA**: `.btn-gold-hero` com `text-brand` sobre accent (contraste).
+- **H1 (copy):** primeira linha *«O Claude / GPT não têm OAB.»*; segunda *«Você tem.»* com **gradiente** em `bg-clip-text` na paleta accent; parágrafo de apoio menciona Claude, GPT ou outro grande modelo.
 
-## O que mudar com cuidado
+## Fundos escuros e cards escuros em secção clara
 
-- Alterar `--color-accent` impacta **toda** a percepção de “premium”; testar contraste em `.btn-gold` e textos `text-accent` sobre `bg-brand`.
-- Evite criar novos tamanhos `text-[Npx]` sem necessidade. Priorize `.label-micro`, `.label-nano`, `.technical-label` e `.metadata-text`.
-- Novas seções devem reusar `SectionTitle`, classes de card e tokens em vez de cores hex ou espaçamentos soltos.
+- Secções **totalmente** escuras: `bg-brand` ou preto hero-adjacente, texto e bordas em escala `white/xx` (ver guia ligado acima).
+- **Programa / módulos**: secção em **`bg-bg-soft`**; cada módulo é um **card escuro** (`bg-brand`, bordas `white/10`, texto claro) — não inverter o fundo da secção inteira.
+
+## Programa com mídia 16:9
+
+- Seção `ProgramSection` suporta thumbs e clipes por módulo; **UI dos módulos** segue o padrão “card escuro em secção clara” (ver [hero-layout-e-fundos-escuros.md](./hero-layout-e-fundos-escuros.md)).
+- Pasta: `public/media/modules`.
+- Convenção de ficheiros (thumbs em WebP):
+  - `modulo-01-thumb-16x9.webp` … `modulo-05-thumb-16x9.webp`
+  - `modulo-01-clip.mp4` (quando existir), etc.
+
+## Classes de cards e componentes
+
+| Classe | Função |
+|--------|--------|
+| `.card-premium` | Card claro padrão |
+| `.card-premium-lg` | Card claro com padding maior |
+| `.card-premium-flush` | Card sem padding interno |
+| `.card-dark` | Card escuro |
+| `.card-dark-flush` | Card escuro sem padding |
+| `.steps-dashboard-shell` | Bloco de mecanismo/fluxo |
+| `.offer-shell` | Legado: bloco único escuro; a oferta atual usa **secção clara** + apenas `.offer-card-glow` |
+| `.offer-card-glow` | Card de compra da oferta |
+| `.price-display` | Escala tipográfica do preço |
+
+## Botões
+
+| Classe | Uso |
+|--------|-----|
+| `.btn-primary` | CTA escuro secundário |
+| `.btn-primary-nav` | CTA do header |
+| `.btn-gold` | CTA de destaque base (`inline-flex`) |
+| `.btn-gold-hero` | CTA principal da hero |
+| `.btn-gold-drawer` | CTA no menu mobile |
+| `.btn-gold-offer` | CTA principal da oferta (`w-full`) |
+
+Tipografia dos botões: **sem letter-spacing extra** (sem `tracking-widest` / `tracking-[0.15em]` nas classes `btn-*`).
+
+## Marca
+
+- Nome principal exibido na interface: **Protocolo Claude Jurídico**.
+- Nome do mecanismo interno (copy): **Protocolo Jurisprudência Inteligente**.
+- Wordmark no footer; logo gráfica pendente.
+
+## Acessibilidade e UX
+
+- Manter skip-link ativo no topo.
+- Garantir contraste mínimo em CTA de destaque e textos secundários.
+- Preservar `aria-expanded` no accordion (FAQ e Programa).
+- Evitar blocos finais “quebrados”: manter transição visual contínua entre Garantia → FAQ → CTA final → Footer.
