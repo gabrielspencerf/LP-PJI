@@ -1,3 +1,4 @@
+import {ClosingSiteBlock} from '@/components/layout/ClosingSiteBlock.tsx';
 import {Footer} from '@/components/layout/Footer.tsx';
 import {AudienceSection} from '@/components/sections/AudienceSection.tsx';
 import {DeliverablesSection} from '@/components/sections/DeliverablesSection.tsx';
@@ -36,10 +37,11 @@ export default function App() {
         <OfferSection />
         <GuaranteeSection />
         <FAQSection />
-        <FinalCTASection />
+        <ClosingSiteBlock>
+          <FinalCTASection />
+          <Footer />
+        </ClosingSiteBlock>
       </main>
-
-      <Footer />
     </div>
   );
 }
