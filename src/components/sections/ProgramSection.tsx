@@ -127,11 +127,11 @@ export function ProgramSection() {
             return (
               <article
                 key={module.number}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-brand text-white shadow-[0_28px_70px_-32px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/[0.05]"
+                className="overflow-hidden rounded-2xl border border-white/12 bg-black/25 text-white shadow-[0_28px_70px_-32px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-white/[0.08] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-black/20"
               >
                 <button
                   type="button"
-                  className="group flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/[0.04] sm:px-7 sm:py-5"
+                  className="group flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/[0.07] sm:px-7 sm:py-5"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                 >
@@ -153,12 +153,12 @@ export function ProgramSection() {
                       initial={{height: 0, opacity: 0}}
                       animate={{height: 'auto', opacity: 1}}
                       exit={{height: 0, opacity: 0}}
-                      className="overflow-hidden border-t border-white/10 bg-black/35"
+                      className="overflow-hidden border-t border-white/10 bg-black/15 backdrop-blur-xl supports-[backdrop-filter]:bg-black/10"
                     >
                       <div className="px-5 py-5 sm:px-7 sm:py-6">
                         <div className="grid items-start gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:gap-6">
-                          <div className="rounded-2xl border border-white/14 bg-white/[0.03] p-3 shadow-[0_22px_60px_-35px_rgba(0,0,0,0.75)] ring-1 ring-inset ring-white/[0.06]">
-                            <div className="relative aspect-video overflow-hidden rounded-lg border border-white/12 bg-black/55">
+                          <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-3 shadow-[0_22px_60px_-35px_rgba(0,0,0,0.55)] ring-1 ring-inset ring-white/[0.08] backdrop-blur-md">
+                            <div className="relative aspect-video overflow-hidden rounded-lg border border-white/12 bg-black/40">
                               {thumbErrors[module.number] ? (
                                 <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_65%_50%_at_50%_35%,rgba(218,119,89,0.18),transparent_70%)]">
                                   <div className="text-center">
@@ -186,7 +186,7 @@ export function ProgramSection() {
                             </div>
                           </div>
 
-                          <div className="rounded-2xl border border-white/12 bg-black/45 p-4 sm:p-5">
+                          <div className="rounded-2xl border border-white/12 bg-black/25 p-4 backdrop-blur-md ring-1 ring-inset ring-white/[0.05] sm:p-5 supports-[backdrop-filter]:bg-black/18">
                             <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
                               <div>
                                 <p className="label-micro mb-2 text-white/50">OBJETIVO</p>

@@ -1,6 +1,6 @@
 # Hero, responsividade e fundos escuros — guia de coerência
 
-Este documento descreve a **hero atual** (`src/components/sections/Hero.tsx`) e padrões para alinhar o resto da landing: **flex centro–centro**, **breakpoints**, **superfícies escuras** e **cards escuros dentro de secções claras** (ex.: programa).
+Este documento descreve a **hero atual** (`src/components/sections/Hero.tsx`) e padrões para alinhar o resto da landing: **flex centro–centro**, **breakpoints**, **superfícies escuras** e **cards** (vidro/desfoco no programa; cards escuros em secções claras noutros blocos, ex.: oferta).
 
 Referência cruzada: tokens e classes globais em [design-system.md](./design-system.md).
 
@@ -117,18 +117,18 @@ Checklist por secção escura:
 
 ---
 
-## 10. Cards escuros em secção **clara** (programa / módulos)
+## 10. Programa / módulos (fundo escuro + **vidro**)
 
-**Regra:** fundo da **secção** mantém-se claro (`bg-bg-soft` ou branco); apenas os **`<article>` / cards** de cada módulo usam superfície escura (`bg-brand`, bordas claras, texto claro). O `SectionTitle` continua sobre fundo claro — contraste legível com `text-brand` / `book-text`.
+**Regra:** a secção **programa** usa o **mesmo tipo de fundo** que a hero (`#050505`, textura de pontos, glows). Os **`<article>`** dos módulos são **cartões em vidro**: fundo semitransparente + **`backdrop-blur`** + bordas claras, para o fundo aparecer desfocado por baixo. O `SectionTitle` usa `tone="dark"` (texto claro sobre o fundo da secção).
 
-Padrão visual alinhado à hero (vidro/escuro):
+Padrão visual (referência `ProgramSection.tsx`):
 
-- Card raiz: `rounded-2xl border border-white/10 bg-brand text-white ring-1 ring-inset ring-white/[0.05]`.
-- Cabeçalho do acordeão: hover `bg-white/[0.04]`; chevron `text-white/55`.
-- Painel expandido: `border-t border-white/10 bg-black/35`.
-- Sub-blocos (vídeo, conteúdo): `bg-black/40`–`bg-black/45`, `border-white/10`–`border-white/12`.
+- Card raiz: `bg-black/25` + `backdrop-blur-2xl` + `backdrop-saturate-150` (+ `supports-[backdrop-filter]:bg-black/20`), `border-white/12`, `ring-inset`.
+- Cabeçalho do acordeão: hover `bg-white/[0.07]`; chevron `text-white/55`.
+- Painel expandido: `border-t border-white/10`, `bg-black/15` + `backdrop-blur-xl` (mais leve que o raiz).
+- Sub-blocos (prévia, conteúdo): `backdrop-blur-md`, `bg-white/[0.06]` ou `bg-black/25` sem opacidade opaca total.
 - Labels: `text-white/50`; parágrafos e listas: `text-white/65`–`text-white/75`.
-- Ícones de destaque: manter **`text-accent`**.
+- Ícones de destaque: **`text-accent`**.
 
 Implementação de referência: `ProgramSection.tsx` (`id="programa"`).
 
@@ -145,7 +145,7 @@ Implementação de referência: `ProgramSection.tsx` (`id="programa"`).
 
 1. [ ] Secções claras: `book-text`, `text-brand`, `border-border` onde aplicável.  
 2. [ ] Secções escuras: paleta da secção 9.  
-3. [ ] “Só cards escuros”: secção clara + cards `bg-brand` (secção 10).  
+3. [ ] **Programa**: secção com fundo escuro texturado; cards módulo em **vidro** (`backdrop-blur`, sem `bg-brand` opaco no raiz) — secção 10.  
 3b. [ ] **Oferta**: secção clara; só o card `.offer-card-glow` escuro (secção 10.1).  
 4. [ ] `layout-container` + `section-base` / `section-tall` / `section-xl` coerentes com [design-system.md](./design-system.md).  
 5. [ ] Não introduzir `min-h-dvh` em wrappers de página **com** conteúdo que cresce sem teto — usar `min-h-0` na cadeia flex quando necessário.  
@@ -161,7 +161,7 @@ Implementação de referência: `ProgramSection.tsx` (`id="programa"`).
 | `src/components/sections/HeroEcosystemStrip.tsx` | Marquee de marcas do ecossistema. |
 | `public/media/brands/*.svg` | SVG oficiais (Commons) + `README` de atribuição. |
 | `src/index.css` | `.btn-gold-hero`, `.scale-exempt`, tokens `@theme`. |
-| `src/components/sections/ProgramSection.tsx` | Cards módulos escuros em secção clara. |
+| `src/components/sections/ProgramSection.tsx` | Módulos em fundo escuro texturado; cards com `backdrop-blur`. |
 | `docs/design/design-system.md` | Índice e secções gerais; este ficheiro é o detalhe da hero + coerência. |
 
 Quando alterar a hero, **atualizar este documento** na mesma PR.
