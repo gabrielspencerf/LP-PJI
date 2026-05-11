@@ -91,13 +91,33 @@ export function ProgramSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="programa" className="section-base section-tall bg-bg-soft" aria-labelledby="heading-programa">
-      <div className="layout-container max-w-5xl">
+    <section
+      id="programa"
+      className="section-base section-tall relative overflow-hidden bg-[#050505] text-white"
+      aria-labelledby="heading-programa"
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute inset-0 opacity-[0.32] [background-size:3.5px_3.5px]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at center, rgba(150, 72, 52, 0.38) 0.55px, transparent 0.6px)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.07] via-transparent to-transparent" />
+        <div className="absolute top-[8%] left-[-10%] h-[min(58vw,30rem)] w-[min(58vw,30rem)] rounded-full bg-accent/28 blur-[110px] opacity-35" />
+        <div className="absolute top-[22%] right-[-12%] h-[min(64vw,34rem)] w-[min(64vw,34rem)] rounded-full bg-orange-500/22 blur-[125px] opacity-28" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_100%,rgba(218,119,89,0.12),transparent_58%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_35%,rgba(255,255,255,0.04),transparent_70%)]" />
+      </div>
+
+      <div className="layout-container relative z-10 max-w-5xl">
         <SectionTitle
           eyebrow="CONTEÚDO DO TREINAMENTO"
           title="O curso foi estruturado para tirar o advogado do improviso."
           desc="Cada módulo resolve uma parte do uso responsável de IA: configuração, briefing, jurisprudência, rotina operacional e validação."
           id="heading-programa"
+          tone="dark"
         />
 
         <div className="space-y-4 reveal">
