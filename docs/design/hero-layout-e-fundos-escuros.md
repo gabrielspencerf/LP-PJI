@@ -34,11 +34,11 @@ Checklist noutras secções: se precisar de “tamanho visual” equivalente ao 
 
 | Camada | Classes principais | Comportamento |
 |--------|-------------------|----------------|
-| Miolo | `layout-container … flex min-h-0 flex-1 flex-col items-center justify-center py-6 sm:py-8 lg:py-9 xl:py-10` | Bloco de conteúdo **centrado em X e Y** dentro do `h-dvh`. |
-| Grelha | Mobile: `justify-items-center items-center gap-y-9`; `lg+`: `lg:grid-cols-12 lg:items-center lg:justify-items-stretch lg:gap-x-10 lg:gap-y-8` | Uma coluna: faixas centradas; duas colunas: células esticadas, **alinhamento vertical entre colunas ao centro**. |
-| Coluna texto | `max-w-xl justify-self-center`; `lg:col-span-6 lg:justify-self-stretch` | Mobile: faixa estreita centrada; desktop: ocupa metade da grelha. |
-| Coluna imagem | `max-w-lg justify-self-center sm:max-w-xl`; `lg:max-w-none lg:items-stretch` | Idem; foto não “rompe” a grelha. |
-| Botões (mobile) | `flex-col items-center justify-center` | Pilha centrada; a partir de `sm`: `flex-row … justify-start` para alinhar com texto à esquerda. |
+| Miolo | `… justify-start lg:justify-center` no `layout-container` | **Mobile:** conteúdo começa no **topo** (evita “corte” que mostrava fotos primeiro quando o miolo era mais alto que o viewport); **desktop:** centro vertical como antes. |
+| `<header>` | `overflow-x-hidden`; `max-lg:overflow-y-auto`; `lg:overflow-hidden` + `lg:h-dvh` | Mobile: scroll vertical **dentro** da hero se precisar; sem listra lateral do `body`. |
+| Grelha | `order-1` texto / `order-2` fotos em `<lg`; `items-start` mobile; `lg:order-none` + `items-center` | Ordem leitura: **copy → fotos** no telemóvel. |
+| Grelha | `lg:grid-cols-12 …` | Duas colunas no desktop. |
+| `html` / `body` | `overflow-x-hidden`, `max-w-[100%]` | Evita faixa clara por overflow horizontal global. |
 
 ---
 

@@ -18,7 +18,7 @@ export function LandingPage() {
   useRevealOnScroll();
 
   return (
-    <div className="min-h-screen selection:bg-accent/30 selection:text-white">
+    <div className="min-h-screen w-full min-w-0 max-w-[100%] overflow-x-hidden selection:bg-accent/30 selection:text-white">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-6 focus:py-3 focus:font-bold focus:text-white focus:shadow-2xl"

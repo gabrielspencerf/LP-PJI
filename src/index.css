@@ -25,10 +25,12 @@
 @layer base {
   html {
     font-size: 80%;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   body {
-    @apply bg-white text-brand antialiased selection:bg-accent/30 selection:text-brand transition-colors duration-500 font-sans;
+    @apply max-w-[100%] overflow-x-hidden bg-white text-brand antialiased selection:bg-accent/30 selection:text-brand transition-colors duration-500 font-sans;
   }
 }
 
