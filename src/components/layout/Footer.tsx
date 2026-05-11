@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import {productName} from '@/config/site.ts';
 
 export function Footer() {
@@ -8,12 +9,12 @@ export function Footer() {
           <span className="font-display text-xs font-semibold uppercase tracking-wide text-white sm:text-sm">{productName}</span>
 
           <div className="flex gap-6 sm:gap-10">
-            <a href="#" className="label-micro text-white/65 transition-colors hover:text-white">
+            <Link to="/termos" className="label-micro text-white/65 transition-colors hover:text-white">
               Termos
-            </a>
-            <a href="#" className="label-micro text-white/65 transition-colors hover:text-white">
+            </Link>
+            <Link to="/privacidade" className="label-micro text-white/65 transition-colors hover:text-white">
               Privacidade
-            </a>
+            </Link>
           </div>
 
           <p className="label-nano max-w-xl text-left !tracking-[0.18em] text-white/60 md:max-w-md md:text-right">
