@@ -33,17 +33,19 @@ export function LegalLayout({children}: LegalLayoutProps) {
 
       <div className="layout-container max-w-3xl py-10 sm:py-14">{children}</div>
 
-      <footer className="border-t border-border py-8">
-        <div className="layout-container flex flex-col items-start justify-between gap-4 text-sm text-muted sm:flex-row sm:items-center">
-          <p className="metadata-text !opacity-100">© {new Date().getFullYear()} {productName}</p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/termos" className="underline-offset-4 transition-colors hover:text-brand hover:underline">
+      <footer className="border-t border-border py-8 font-sans">
+        <div className="layout-container flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <p className="footer-light-meta shrink-0">
+            © {new Date().getFullYear()} {productName}
+          </p>
+          <nav className="flex flex-wrap gap-4 sm:gap-6" aria-label="Links do rodapé">
+            <Link to="/termos" className="footer-light-nav">
               Termos de uso
             </Link>
-            <Link to="/privacidade" className="underline-offset-4 transition-colors hover:text-brand hover:underline">
+            <Link to="/privacidade" className="footer-light-nav">
               Privacidade
             </Link>
-          </div>
+          </nav>
         </div>
       </footer>
     </div>

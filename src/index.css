@@ -223,6 +223,32 @@
   @apply font-mono text-[11px] tracking-widest text-muted opacity-70 uppercase;
 }
 
+/* Rodapé em superfície escura — sans único, sem mono (contrasta com metadata-text) */
+.footer-dark-brand {
+  @apply font-sans text-xs font-semibold uppercase tracking-[0.16em] text-white sm:text-sm;
+}
+
+.footer-dark-nav {
+  @apply font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-white/65 transition-colors hover:text-white;
+}
+
+.footer-dark-disclaimer {
+  @apply font-sans text-xs font-normal leading-relaxed text-white/60 sm:text-sm;
+}
+
+.footer-dark-meta {
+  @apply font-sans text-[11px] font-normal leading-snug tracking-wide text-white/48 sm:text-xs;
+}
+
+/* Rodapé em superfície clara (páginas legais) — mesma hierarquia */
+.footer-light-meta {
+  @apply font-sans text-xs font-normal text-muted sm:text-sm;
+}
+
+.footer-light-nav {
+  @apply font-sans text-xs font-medium text-muted underline-offset-4 transition-colors hover:text-brand hover:underline;
+}
+
 .scale-exempt {
   zoom: 1.25;
 }
