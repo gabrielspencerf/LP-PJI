@@ -9,7 +9,7 @@ export function OfferSection() {
     'Checklists de validação',
     'Modelos prontos para adaptar',
     'Política interna de IA',
-    'Garantia de 7 dias',
+    'Garantia de 7 dias (conforme plataforma)',
   ];
 
   return (
@@ -40,7 +40,7 @@ export function OfferSection() {
                 {icon: ClipboardList, t: 'Briefing estruturado', d: 'Uso assistido por etapa.'},
                 {icon: ShieldCheck, t: 'Redução de risco', d: 'Camadas de validação e revisão.'},
                 {icon: BookOpenCheck, t: 'Prompt library', d: 'Modelos para adaptar ao escritório.'},
-                {icon: CheckCircle2, t: 'Garantia comercial', d: 'Sete dias conforme plataforma.'},
+                {icon: CheckCircle2, t: 'Garantia comercial', d: 'Prazo e regras conforme o checkout.'},
               ].map((item, i) => (
                 <div key={i} className="flex gap-3">
                   <item.icon className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
@@ -92,7 +92,7 @@ export function OfferSection() {
                       </div>
                     </div>
                   </div>
-                  <p className="label-micro tracking-[0.22em] text-accent/90">Garantia incondicional de 7 dias</p>
+                  <p className="label-micro tracking-[0.22em] text-accent/90">7 dias para avaliar — conforme plataforma</p>
                 </div>
 
                 <div className="mb-10 sm:mb-12">
@@ -131,7 +131,7 @@ export function OfferSection() {
                 </div>
 
                 <p className="label-micro mt-6 text-center text-white/55">
-                  Pagamento seguro · Acesso pela plataforma · Garantia de 7 dias
+                  Pagamento seguro · Acesso pela plataforma · Arrependimento conforme política do checkout
                 </p>
               </div>
             </div>

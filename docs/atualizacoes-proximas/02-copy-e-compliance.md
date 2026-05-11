@@ -439,10 +439,17 @@ O treinamento ensina critérios para evitar exposição indevida. Dados sensíve
 
 ### Pergunta 6
 
-Existe garantia?
+Como funcionam cancelamento e os 7 dias de garantia?
 
 Resposta:
-Sim. São 7 dias de garantia conforme as regras da plataforma de pagamento.
+Prazo, pedido de reembolso e eventual consumo parcial do conteúdo seguem exclusivamente a política da plataforma em que a compra for concluída (checkout), incluindo regras de arrependimento quando aplicáveis. O pedido deve ser feito pelo suporte oficial da plataforma, dentro do prazo indicado no momento da compra.
+
+### Pergunta 7
+
+Onde acesso o curso depois do pagamento?
+
+Resposta:
+O acesso costuma ser liberado na própria plataforma (área do comprador ou e-mail de confirmação). Guarde o comprovante e use apenas links oficiais enviados pela plataforma.
 
 ---
 

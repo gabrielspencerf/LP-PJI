@@ -83,8 +83,9 @@ LP-PJI/
 | `#riscos` | Problema |
 | `#fluxo` | Mecanismo |
 | `#programa` | Programa |
-| `#faq` | FAQ |
 | `#oferta` | Oferta |
+| `#garantia` | Garantia comercial (7 dias / plataforma) |
+| `#faq` | FAQ |
 
 ## Decisões de produto e copy
 

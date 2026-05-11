@@ -58,7 +58,7 @@ Evitar naming antigo como principal (“Protocolo IJ”, “Master Edition”, e
 
 ## IDs e âncoras
 
-- `#metodo`, `#riscos`, `#fluxo`, `#programa`, `#faq`, `#oferta`.
+- `#metodo`, `#riscos`, `#fluxo`, `#programa`, `#oferta`, `#garantia`, `#faq`.
 - Revisar navegação quando renomear IDs.
 
 ## Rotas legais (fora da landing)

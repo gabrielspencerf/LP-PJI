@@ -369,7 +369,7 @@ Responder somente se isso for real. Se não houver confirmação, usar: "O acess
 
 ### Tem garantia?
 
-Sim. São 7 dias de garantia conforme regras da plataforma.
+Sim, no sentido comercial: prazo de arrependimento e reembolso seguem a política da plataforma de checkout (em geral até 7 dias corridos para compra remota, quando aplicável). Não usar “garantia incondicional”; remeter sempre ao contrato exibido na compra e ao suporte da plataforma.
 
 ---
 

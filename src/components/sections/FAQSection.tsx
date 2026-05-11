@@ -9,31 +9,35 @@ export function FAQSection() {
   const qna = [
     {
       q: 'O curso substitui pesquisa jurídica?',
-      a: 'Não. O curso ensina a usar Claude como apoio de análise, organização e redação. A conferência de fonte, tese e aplicação continua sendo responsabilidade do advogado.',
+      a: 'Não. O treinamento mostra uso assistido do Claude para análise, organização e redação. Pesquisa em fonte oficial, checagem de tese e decisão técnica continuam com o advogado.',
     },
     {
       q: 'O Claude vai buscar jurisprudência sozinho?',
-      a: 'Não é esse o fluxo recomendado. O advogado deve buscar a decisão em fonte oficial e usar Claude para resumir, comparar e organizar a análise.',
+      a: 'Não é o fluxo recomendado. A decisão deve vir de fonte oficial; o Claude entra para resumir, comparar e organizar o material que você trouxer, sempre sob revisão humana.',
     },
     {
       q: 'Preciso saber programar?',
-      a: 'Não. O treinamento é prático e focado no uso de Claude com prompts, checklists e organização de contexto.',
+      a: 'Não. O foco é operacional: prompts, checklists, organização de contexto e validação — sem exigência de código.',
     },
     {
       q: 'Posso usar em qualquer área do direito?',
-      a: 'Sim. O método é estrutural. Os exemplos podem variar, mas briefing, anonimização, validação de fonte e revisão humana se aplicam em diferentes áreas.',
+      a: 'Sim. O método é estrutural: briefing, anonimização, validação de fonte e revisão humana valem para diferentes áreas; os exemplos podem variar.',
     },
     {
       q: 'Posso inserir dados reais de clientes?',
-      a: 'O treinamento ensina critérios para evitar exposição indevida. Dados sensíveis devem ser tratados, anonimizados ou removidos conforme o caso.',
+      a: 'O treinamento traz critérios para reduzir exposição indevida. Dados sensíveis exigem cuidado de sigilo, base legal e, quando fizer sentido, anonimização ou remoção antes de usar em IA.',
     },
     {
       q: 'O curso promete resultado em processo?',
-      a: 'Não. O curso não promete resultado jurídico, processual ou financeiro. Ele ensina um método de uso assistido de IA.',
+      a: 'Não. Não há promessa de resultado jurídico, processual ou financeiro — apenas método de uso assistido de IA com responsabilidade profissional.',
     },
     {
-      q: 'Existe garantia?',
-      a: 'Sim. São 7 dias de garantia, conforme as regras da plataforma de pagamento.',
+      q: 'Como funcionam cancelamento e os 7 dias de garantia?',
+      a: 'Prazo, pedido de reembolso e eventual consumo parcial do conteúdo seguem exclusivamente a política da plataforma em que você concluir a compra (checkout), incluindo regras de arrependimento do consumidor quando aplicáveis. Leia o resumo no momento da compra e abra o pedido pelo suporte oficial da plataforma dentro do prazo indicado. Há um resumo dedicado na secção Garantia comercial, logo acima deste FAQ.',
+    },
+    {
+      q: 'Onde acesso o curso depois do pagamento?',
+      a: 'O acesso costuma ser liberado na própria plataforma (área do comprador ou e-mail de confirmação). Guarde o comprovante e use apenas links oficiais enviados pela plataforma.',
     },
   ];
 
