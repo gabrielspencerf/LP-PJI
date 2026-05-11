@@ -1,20 +1,86 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Protocolo Jurisprudência Inteligente — Landing
 
-# Run and deploy your AI Studio app
+Landing page estática de alta conversão para o **Protocolo IJ**, construída com React + Vite + Tailwind.
 
-This contains everything you need to run your app locally.
+Documentação técnica e de conteúdo: **[docs/README.md](./docs/README.md)**.
 
-View your app in AI Studio: https://ai.studio/apps/e24494ff-9e15-478b-81d3-2f30960f98bc
+## Contexto desta atualização
 
-## Run Locally
+Esta versão consolidou a base para produção:
 
-**Prerequisites:**  Node.js
+- estrutura modular por domínio (`layout`, `sections`, `ui`, `icons`, `hooks`, `config`);
+- padronização visual em classes semânticas globais (`section-*`, `card-*`, `btn-*`, `label-*`);
+- ajustes de responsividade e consistência entre mobile/tablet/desktop;
+- correção de regressões visuais em cards e botões;
+- limpeza do legado do Google AI Studio (arquivo de metadata movido para `docs/referencias`);
+- documentação completa em `docs/` (spec, design system, copy, guias de IA e logs).
 
+## Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- React 19 + TypeScript
+- Vite 6
+- Tailwind CSS 4 (`@tailwindcss/vite`)
+- Motion (`motion/react`)
+- Lucide React
+
+## Estrutura principal
+
+```text
+LP-PJI/
+├── docs/                      # Base documental do projeto
+├── public/                    # Assets estáticos (favicon)
+├── src/
+│   ├── components/
+│   │   ├── icons/
+│   │   ├── layout/
+│   │   ├── sections/
+│   │   └── ui/
+│   ├── config/                # Configuração central do site
+│   ├── hooks/                 # Hooks reutilizáveis (ex.: reveal on scroll)
+│   ├── App.tsx
+│   └── index.css              # Tokens e classes semânticas globais
+├── index.html
+└── package.json
+```
+
+## Requisitos
+
+- [Node.js](https://nodejs.org/) LTS
+
+## Uso local
+
+```bash
+npm install
+npm run dev
+```
+
+Servidor: `http://localhost:3000`
+
+## Scripts
+
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Sobe servidor de desenvolvimento |
+| `npm run build` | Gera build de produção em `dist/` |
+| `npm run preview` | Preview local do build |
+| `npm run lint` | Verificação TypeScript (`tsc --noEmit`) |
+| `npm run clean` | Remove `dist/` |
+
+## Variáveis de ambiente
+
+Copie `.env.example` para `.env`:
+
+| Variável | Uso |
+|----------|-----|
+| `DISABLE_HMR` | `true` desliga HMR em ambientes com watcher restrito |
+| `VITE_CHECKOUT_URL` | URL final do checkout (ex.: Hotmart) |
+
+Não há chave de API obrigatória para renderização da landing.
+
+## Build e deploy
+
+```bash
+npm run build
+```
+
+Publique `dist/` em host estático (Vercel, Netlify, S3+CloudFront, Nginx, etc.) e configure `VITE_CHECKOUT_URL` no ambiente de deploy.

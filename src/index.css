@@ -31,12 +31,103 @@
   @apply bg-white/80 backdrop-blur-md border-b border-border transition-all duration-500;
 }
 
+.layout-container {
+  @apply container mx-auto px-4 sm:px-8;
+}
+
+.section-base {
+  @apply py-24 sm:py-32;
+}
+
+.section-tall {
+  @apply lg:py-40;
+}
+
+.section-xl {
+  @apply lg:py-48;
+}
+
+.section-hero {
+  @apply pt-16 sm:pt-20 pb-16 sm:pb-28;
+}
+
 .card-premium {
   @apply bg-white border border-brand/[0.04] rounded-2xl p-8 transition-all duration-500 hover:border-accent/40 hover:shadow-heavy hover:-translate-y-1 relative overflow-hidden;
 }
 
+.card-premium-lg {
+  @apply p-10;
+}
+
+.card-premium-flush {
+  @apply p-0;
+}
+
 .card-dark {
   @apply bg-brand border border-white/5 rounded-[2.5rem] p-8 transition-all duration-500 shadow-inner-glow relative overflow-hidden;
+}
+
+.card-dark-flush {
+  @apply p-0;
+}
+
+.hero-panel-shadow {
+  box-shadow: 0 40px 100px -15px rgba(0, 0, 0, 0.5);
+}
+
+.accent-glow-strong {
+  box-shadow: 0 0 15px rgba(197, 160, 89, 1);
+}
+
+.accent-glow-soft {
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+}
+
+.steps-dashboard-shell {
+  @apply relative bg-brand p-4 sm:p-8 shadow-2xl border border-white/10;
+  border-radius: 2.5rem;
+}
+
+.steps-processing-glow {
+  box-shadow: 0 0 50px rgba(197, 160, 89, 0.3);
+}
+
+.offer-shell {
+  @apply max-w-7xl mx-auto bg-brand text-white relative overflow-hidden border border-white/5 p-10 sm:p-20 lg:p-28;
+  border-radius: 3rem;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .offer-shell {
+    border-radius: 5rem;
+  }
+}
+
+.offer-card-glow {
+  @apply bg-brand border border-white/5 p-8 sm:p-14 transition-all duration-500 shadow-inner-glow relative overflow-hidden;
+  border-radius: 2.5rem;
+}
+
+.offer-card-glow:hover {
+  box-shadow: 0 0 60px -15px rgba(197, 160, 89, 0.35);
+}
+
+.price-display {
+  @apply font-display font-bold text-white tracking-tighter leading-none;
+  font-size: 5rem;
+}
+
+@media (min-width: 640px) {
+  .price-display {
+    font-size: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .price-display {
+    font-size: 11rem;
+  }
 }
 
 .btn-primary {
@@ -45,6 +136,22 @@
 
 .btn-gold {
   @apply bg-accent text-white py-5 px-10 rounded-2xl font-semibold text-[12px] tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 flex items-center justify-center gap-3;
+}
+
+.btn-primary-nav {
+  @apply bg-brand text-white rounded-xl font-semibold transition-all hover:bg-brand-light hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-brand/20 py-3 px-8 text-xs tracking-widest uppercase hover:shadow-accent/20;
+}
+
+.btn-gold-hero {
+  @apply bg-accent text-white rounded-2xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 py-5 sm:py-6 px-10 text-xs sm:text-sm;
+}
+
+.btn-gold-drawer {
+  @apply bg-accent text-white rounded-2xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-2xl shadow-accent/30 py-6 px-10 text-center text-base mt-8;
+}
+
+.btn-gold-offer {
+  @apply bg-accent text-white rounded-3xl font-semibold tracking-[0.15em] uppercase transition-all hover:bg-accent-dark hover:-translate-y-1 active:translate-y-0 shadow-heavy shadow-accent/30 w-full text-center py-6 sm:py-7 px-10 relative overflow-hidden;
 }
 
 .reveal {
@@ -65,6 +172,19 @@
   animation: float 4s ease-in-out infinite;
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -78,6 +198,22 @@
 
 .book-text {
   @apply font-sans text-base sm:text-lg leading-relaxed opacity-90 text-brand font-light tracking-wide;
+}
+
+.accent-rule {
+  @apply h-[1.5px] w-12 bg-accent/30;
+}
+
+.label-micro {
+  @apply text-[10px] font-semibold uppercase tracking-[0.2em];
+}
+
+.label-nano {
+  @apply text-[9px] font-semibold uppercase tracking-[0.3em];
+}
+
+.label-ultra {
+  @apply text-[8px] font-semibold uppercase tracking-widest;
 }
 
 .technical-label {

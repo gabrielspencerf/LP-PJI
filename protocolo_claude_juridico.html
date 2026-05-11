@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Claude Jurídico — Estrutura do Curso</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f3;
+    color: #1a1a18;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* Header do curso */
+  .curso-header {
+    border: 0.5px solid #d4d2c8;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    background: #ebebea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .curso-title { font-size: 16px; font-weight: 500; }
+  .curso-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .meta-item {
+    font-size: 12px;
+    color: #5f5e5a;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .meta-icon { font-size: 14px; }
+
+  /* Módulos */
+  .mod {
+    border: 0.5px solid #d4d2c8;
+    border-radius: 12px;
+    margin-bottom: .875rem;
+    overflow: hidden;
+  }
+
+  .mod-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: .875rem 1.25rem;
+    cursor: pointer;
+    background: #ebebea;
+    user-select: none;
+    transition: background .15s;
+  }
+  .mod-header:hover { background: #e2e0d8; }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .m1 .badge { background: #EEEDFE; color: #3C3489; }
+  .m2 .badge { background: #E1F5EE; color: #085041; }
+  .m3 .badge { background: #E6F1FB; color: #0C447C; }
+  .m4 .badge { background: #FAEEDA; color: #633806; }
+  .mb .badge { background: #FCEBEB; color: #791F1F; }
+
+  .mod-info { flex: 1; }
+  .mod-title { font-size: 14px; font-weight: 500; }
+  .mod-sub { font-size: 12px; color: #5f5e5a; margin-top: 2px; }
+
+  .chevron {
+    font-size: 18px;
+    color: #888780;
+    transition: transform .2s;
+    line-height: 1;
+  }
+  .mod.open > .mod-header .chevron { transform: rotate(180deg); }
+
+  /* Aulas */
+  .aulas { display: none; }
+  .mod.open > .aulas { display: block; }
+
+  .aula {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 10px;
+    padding: .875rem 1.25rem;
+    border-top: 0.5px solid #d4d2c8;
+    background: #fff;
+  }
+
+  .aula-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: #888780;
+    padding-top: 2px;
+    text-align: center;
+  }
+
+  .aula-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #1a1a18;
+  }
+
+  .items { list-style: none; margin-bottom: .5rem; }
+  .items li {
+    font-size: 12px;
+    color: #5f5e5a;
+    padding: 2px 0;
+    display: flex;
+    gap: 6px;
+    line-height: 1.5;
+  }
+  .items li::before {
+    content: "·";
+    color: #888780;
+    flex-shrink: 0;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: #f1efe8;
+    border: 0.5px solid #b4b2a9;
+    color: #5f5e5a;
+  }
+
+  .note {
+    border-left: 2px solid #5DCAA5;
+    background: #E1F5EE;
+    border-radius: 0 8px 8px 0;
+    padding: .5rem .875rem;
+    margin: .875rem 1.25rem 0;
+    font-size: 12px;
+    color: #085041;
+    line-height: 1.5;
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a18; color: #f1efe8; }
+    .curso-header { background: #2c2c2a; border-color: #444441; }
+    .mod { border-color: #444441; }
+    .mod-header { background: #2c2c2a; }
+    .mod-header:hover { background: #3a3a38; }
+    .aula { background: #222220; border-color: #444441; }
+    .aula-title { color: #f1efe8; }
+    .items li { color: #b4b2a9; }
+    .items li::before { color: #888780; }
+    .tag { background: #2c2c2a; border-color: #444441; color: #b4b2a9; }
+    .mod-sub { color: #888780; }
+    .meta-item { color: #888780; }
+    .aula-num { color: #888780; }
+    .chevron { color: #888780; }
+    .note { background: #0a2e22; color: #9FE1CB; border-color: #1D9E75; }
+
+    .m1 .badge { background: #26215C; color: #CECBF6; }
+    .m2 .badge { background: #04342C; color: #9FE1CB; }
+    .m3 .badge { background: #042C53; color: #B5D4F4; }
+    .m4 .badge { background: #412402; color: #FAC775; }
+    .mb .badge { background: #501313; color: #F7C1C1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="curso-header">
+    <div class="curso-title">Protocolo Claude Jurídico</div>
+    <div class="curso-meta">
+      <span class="meta-item"><span class="meta-icon">🎬</span> 16 aulas</span>
+      <span class="meta-item"><span class="meta-icon">⏱</span> ~4h gravadas</span>
+      <span class="meta-item"><span class="meta-icon">📄</span> 16 entregáveis</span>
+    </div>
+  </div>
+
+  <!-- M1 -->
+  <div class="mod m1 open" id="m1">
+    <div class="mod-header" onclick="tog('m1')">
+      <span class="badge">Módulo 1</span>
+      <div class="mod-info">
+        <div class="mod-title">Setup Seguro</div>
+        <div class="mod-sub">3 aulas · ~45 min</div>
+      </div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="aulas">
+      <div class="aula">
+        <span class="aula-num">1.1</span>
+        <div>
+          <div class="aula-title">Instalação e primeiros passos no Claude Desktop</div>
+          <ul class="items">
+            <li>Diferença entre Claude.ai no navegador e o Claude Desktop — por que o Desktop é melhor para trabalho</li>
+            <li>Instalação no Mac e Windows passo a passo com tela compartilhada</li>
+            <li>Qual plano escolher: Free, Pro ou Max — comparativo direto por uso</li>
+            <li>Primeiras configurações: idioma, comportamento padrão e instrução global</li>
+          </ul>
+          <span class="tag">📄 checklist de instalação + instrução global pronta para copiar</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">1.2</span>
+        <div>
+          <div class="aula-title">Projetos — como organizar seu trabalho dentro do Claude</div>
+          <ul class="items">
+            <li>O que é um Projeto no Claude e como ele mantém contexto entre conversas</li>
+            <li>Como criar projetos separados por tipo de trabalho (um por área, um por cliente)</li>
+            <li>Como colocar arquivos, modelos e instruções dentro de um projeto</li>
+            <li>Diferença entre o que vai no projeto fixo vs. o que vai só na conversa</li>
+          </ul>
+          <span class="tag">📄 estrutura de projetos pronta + modelo de instrução por projeto</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">1.3</span>
+        <div>
+          <div class="aula-title">O que nunca colar no Claude sem tratar antes</div>
+          <ul class="items">
+            <li>Como o Claude armazena dados — o que fica, o que não fica, diferença por plano</li>
+            <li>Técnica de anonimização: trocar nome, CPF e valores por marcadores antes de colar</li>
+            <li>Onde configurar privacidade no Claude Desktop — passo a passo com prints</li>
+            <li>Regra prática: o que pode colar, o que precisa anonimizar, o que nunca entra</li>
+          </ul>
+          <span class="tag">📄 guia de anonimização com exemplos prontos + checklist de privacidade</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="mod m2" id="m2">
+    <div class="mod-header" onclick="tog('m2')">
+      <span class="badge">Módulo 2</span>
+      <div class="mod-info">
+        <div class="mod-title">Método de Briefing Jurídico</div>
+        <div class="mod-sub">3 aulas · ~45 min</div>
+      </div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="aulas">
+      <div class="aula">
+        <span class="aula-num">2.1</span>
+        <div>
+          <div class="aula-title">Por que o texto sai genérico — e como estruturar um prompt que funciona</div>
+          <ul class="items">
+            <li>Os 6 elementos de um prompt útil: papel, contexto, fonte, objetivo, restrição e formato</li>
+            <li>Comparativo ao vivo: prompt de uma linha vs. prompt estruturado — mesma tarefa, resultado diferente</li>
+            <li>Como pedir que o Claude faça perguntas antes de escrever — evita saída genérica</li>
+            <li>Como dar um exemplo de texto do escritório para o Claude seguir o estilo</li>
+          </ul>
+          <span class="tag">📄 template de prompt jurídico preenchível</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">2.2</span>
+        <div>
+          <div class="aula-title">Como dividir uma tarefa grande em etapas — o Claude pensa melhor assim</div>
+          <ul class="items">
+            <li>Por que pedir tudo de uma vez gera resultado pior do que pedir em partes</li>
+            <li>Fluxo em etapas: Claude organiza os fatos → aponta os riscos → aí redige</li>
+            <li>Como usar esse fluxo para qualquer documento longo ou complexo</li>
+            <li>Como pedir versões diferentes da mesma saída: técnica, para cliente, para negociação</li>
+          </ul>
+          <span class="tag">📄 fluxo de prompt em etapas por tipo de tarefa</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">2.3</span>
+        <div>
+          <div class="aula-title">Ensinando o Claude a escrever do jeito do escritório</div>
+          <ul class="items">
+            <li>Como pegar 2 ou 3 textos do escritório e usar como exemplo de estilo para o Claude</li>
+            <li>Como descrever o que evitar: tom formal demais, frases longas, termos que o cliente não entende</li>
+            <li>Como salvar esse padrão no projeto para reusar sem reconfigurar toda vez</li>
+            <li>Resultado esperado: saída com cara do escritório, não de IA genérica</li>
+          </ul>
+          <span class="tag">📄 prompt-base de comportamento pronto por área (trabalhista, cível, família, contratos)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3 -->
+  <div class="mod m3" id="m3">
+    <div class="mod-header" onclick="tog('m3')">
+      <span class="badge">Módulo 3</span>
+      <div class="mod-info">
+        <div class="mod-title">Jurisprudência com Claude</div>
+        <div class="mod-sub">4 aulas · ~60 min · diferencial central do curso</div>
+      </div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="aulas">
+      <div class="note">Lógica do módulo: você ensina como usar o Claude pra analisar texto de decisão judicial que o advogado já trouxe — não ensina direito, ensina o fluxo.</div>
+      <div class="aula">
+        <span class="aula-num">3.1</span>
+        <div>
+          <div class="aula-title">Por que o Claude inventa decisões judiciais — e o fluxo correto</div>
+          <ul class="items">
+            <li>Como LLMs funcionam: completam texto de forma plausível, não buscam informação real</li>
+            <li>Por que pedir "cite jurisprudência sobre X" é o erro mais perigoso que existe</li>
+            <li>O fluxo correto: advogado busca a decisão em site oficial → cola o texto → Claude analisa</li>
+            <li>Sites onde o advogado busca a decisão (STJ, STF, TJs) — você não precisa saber usar, só mostrar que existem</li>
+          </ul>
+          <span class="tag">📄 fluxograma do uso correto + lista de onde buscar por área</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">3.2</span>
+        <div>
+          <div class="aula-title">Como pedir para o Claude resumir e explicar uma decisão judicial</div>
+          <ul class="items">
+            <li>Como colar o texto de uma decisão e pedir um resumo estruturado em linguagem simples</li>
+            <li>Prompt de análise: o que foi decidido, por quê, quem ganhou, o que muda na prática</li>
+            <li>Como pedir que o Claude indique se aquela decisão se aplica a um caso parecido</li>
+            <li>Demonstração ao vivo com decisão real copiada do STJ</li>
+          </ul>
+          <span class="tag">📄 prompt de resumo de decisão + prompt de verificação de aplicabilidade</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">3.3</span>
+        <div>
+          <div class="aula-title">Comparando várias decisões de uma vez no mesmo projeto</div>
+          <ul class="items">
+            <li>Como carregar múltiplas decisões num projeto e pedir comparação entre elas</li>
+            <li>Prompt de comparação: o que cada uma decidiu, onde concordam, onde divergem</li>
+            <li>Como pedir que o Claude identifique qual decisão é mais favorável para um lado</li>
+            <li>Como transformar essa comparação em um resumo para o cliente entender</li>
+          </ul>
+          <span class="tag">📄 prompt de análise comparativa + template de resumo para cliente</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">3.4</span>
+        <div>
+          <div class="aula-title">Usando as decisões analisadas para gerar o texto da peça</div>
+          <ul class="items">
+            <li>Como instruir o Claude a usar só o que foi colado — nunca buscar por conta própria</li>
+            <li>Como pedir que o Claude aponte quando está faltando uma decisão para embasar algo</li>
+            <li>Como organizar a saída para o advogado saber de onde veio cada argumento</li>
+            <li>Checklist de verificação antes de usar: o que o advogado precisa conferir manualmente</li>
+          </ul>
+          <span class="tag">📄 prompt de geração com rastreabilidade + checklist de verificação pré-uso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M4 -->
+  <div class="mod m4" id="m4">
+    <div class="mod-header" onclick="tog('m4')">
+      <span class="badge">Módulo 4</span>
+      <div class="mod-info">
+        <div class="mod-title">Rotina do Escritório Automatizada</div>
+        <div class="mod-sub">4 aulas · ~55 min</div>
+      </div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="aulas">
+      <div class="aula">
+        <span class="aula-num">4.1</span>
+        <div>
+          <div class="aula-title">Resumindo documentos longos e montando linha do tempo</div>
+          <ul class="items">
+            <li>Como arrastar um PDF longo pro Claude e pedir um resumo com os pontos principais</li>
+            <li>Como pedir uma linha do tempo dos fatos: data, o que aconteceu, quem estava envolvido</li>
+            <li>Como pedir que o Claude separe o que está no documento do que é suposição</li>
+            <li>Como usar esse resumo para preparar reunião ou montar um documento novo</li>
+          </ul>
+          <span class="tag">📄 prompt de resumo de documento + template de linha do tempo</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">4.2</span>
+        <div>
+          <div class="aula-title">E-mails, follow-up e comunicação com cliente no piloto automático</div>
+          <ul class="items">
+            <li>Como gerar e-mail de atualização para cliente a partir de um resumo do que aconteceu</li>
+            <li>Prompt de follow-up: profissional, direto, com próximo passo claro</li>
+            <li>Como gerar ata de reunião colando as anotações brutas ou transcrição</li>
+            <li>Como gerar checklist de documentos que o cliente precisa entregar por tipo de caso</li>
+          </ul>
+          <span class="tag">📄 biblioteca de prompts de comunicação + modelos de e-mail prontos</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">4.3</span>
+        <div>
+          <div class="aula-title">Tarefas repetitivas que o Claude resolve em segundos</div>
+          <ul class="items">
+            <li>Como gerar proposta de honorários com linguagem profissional a partir de um briefing</li>
+            <li>Como criar FAQ interno para treinar estagiários sem escrever do zero</li>
+            <li>Como usar Claude para categorizar e priorizar e-mails e tarefas do dia</li>
+            <li>Como criar checklists de documentos por tipo de caso sem precisar lembrar de cabeça</li>
+          </ul>
+          <span class="tag">📄 prompts de tarefas operacionais + FAQ interno pronto para adaptar</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">4.4</span>
+        <div>
+          <div class="aula-title">Criando conteúdo para redes sem violar as regras da OAB</div>
+          <ul class="items">
+            <li>O que advogado pode e não pode postar — regra simples sem precisar ler o Provimento inteiro</li>
+            <li>Prompt de conteúdo informativo: educativo, sem prometer resultado, sem chamar para contratar</li>
+            <li>Como gerar post, legenda e roteiro de vídeo curto dentro das regras</li>
+            <li>Como colocar um alerta no prompt para o Claude sinalizar se algo soou agressivo demais</li>
+          </ul>
+          <span class="tag">📄 prompt de conteúdo com filtro OAB + modelos de post e roteiro prontos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bônus -->
+  <div class="mod mb" id="mb">
+    <div class="mod-header" onclick="tog('mb')">
+      <span class="badge">Bônus</span>
+      <div class="mod-info">
+        <div class="mod-title">Segurança, Ética e Validação</div>
+        <div class="mod-sub">2 aulas · ~30 min</div>
+      </div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="aulas">
+      <div class="aula">
+        <span class="aula-num">B.1</span>
+        <div>
+          <div class="aula-title">Os casos reais de advogados multados e o protocolo para não cair nisso</div>
+          <ul class="items">
+            <li>O que aconteceu em cada caso: TJSC, TJPR, TRT-3, TST — explicado sem juridiquês</li>
+            <li>O erro técnico por trás de cada caso: pediram para o Claude inventar, ele inventou</li>
+            <li>Protocolo de 3 passos antes de usar qualquer saída do Claude com referência legal</li>
+            <li>Como criar um fluxo simples: Claude gerou → advogado conferiu → fonte confirmada → usou</li>
+          </ul>
+          <span class="tag">📄 checklist anti-alucinação + fluxo de validação visual pronto</span>
+        </div>
+      </div>
+      <div class="aula">
+        <span class="aula-num">B.2</span>
+        <div>
+          <div class="aula-title">Política interna e como falar de IA com o cliente</div>
+          <ul class="items">
+            <li>Por que o escritório precisa de uma política interna de IA — e o que ela precisa ter</li>
+            <li>Modelo de política pronto para adaptar: 1 página, linguagem simples</li>
+            <li>Modelo de cláusula para colocar no contrato com o cliente avisando que usa IA</li>
+            <li>Como explicar o uso de IA para o cliente sem gerar desconfiança</li>
+          </ul>
+          <span class="tag">📄 política interna pronta + cláusula contratual pronta + roteiro de conversa com cliente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  function tog(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+</script>
+</body>
+</html>
