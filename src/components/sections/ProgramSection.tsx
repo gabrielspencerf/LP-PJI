@@ -89,6 +89,7 @@ const mediaBasePath = '/media/modules';
 
 export function ProgramSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [thumbErrors, setThumbErrors] = useState<Record<string, boolean>>({});
 
   return (
     <section
@@ -156,18 +157,28 @@ export function ProgramSection() {
                     >
                       <div className="px-5 py-5 sm:px-7 sm:py-6">
                         <div className="grid items-start gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:gap-6">
-                          <div className="rounded-2xl border border-white/12 bg-black/40 p-3">
-                            <div className="aspect-video overflow-hidden rounded-lg border border-white/10 bg-black/50">
-                              <img
-                                src={`${mediaBasePath}/${module.media.thumbnailFile}`}
-                                alt={module.media.alt}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                                onError={(event) => {
-                                  const target = event.currentTarget;
-                                  target.style.display = 'none';
-                                }}
-                              />
+                          <div className="rounded-2xl border border-white/14 bg-white/[0.03] p-3 shadow-[0_22px_60px_-35px_rgba(0,0,0,0.75)] ring-1 ring-inset ring-white/[0.06]">
+                            <div className="relative aspect-video overflow-hidden rounded-lg border border-white/12 bg-black/55">
+                              {thumbErrors[module.number] ? (
+                                <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_65%_50%_at_50%_35%,rgba(218,119,89,0.18),transparent_70%)]">
+                                  <div className="text-center">
+                                    <p className="text-xs font-semibold text-white/80">Prévia indisponível</p>
+                                    <p className="mt-1 text-[11px] leading-snug text-white/55">
+                                      Não foi possível carregar a imagem do módulo {module.number}.
+                                    </p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <img
+                                  src={`${mediaBasePath}/${module.media.thumbnailFile}`}
+                                  alt={module.media.alt}
+                                  className="h-full w-full object-cover"
+                                  loading="lazy"
+                                  onError={() => {
+                                    setThumbErrors((prev) => ({...prev, [module.number]: true}));
+                                  }}
+                                />
+                              )}
                             </div>
                             <div className="mt-3 inline-flex items-center gap-2 text-white/55">
                               <PlayCircle className="h-4 w-4 text-accent" aria-hidden="true" />
